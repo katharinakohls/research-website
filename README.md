@@ -3,10 +3,13 @@ Postdoctoral researcher in Computer Security at Ruhr University Bochum, Excellen
 
 ## Publications
 
+### 2020
+
 <!-- - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper..
 **IMP4GT: IMPersonation Attacks in 4G NeTworks**..
 Network and Distributed System Security Symposium, NDSS ’20, San Diego, CA, USA, Feb. 2020 -->
 
+### 2019
 - L. Schönherr, K. Kohls, S. Zeiler, T. Holz, and D. Kolossa  
 **Adversarial Attacks Against Automatic Speech Recognition Systems via Psychoacoustic Hiding**  
 Network ad Distributed System Security Symposium (NDSS'19)
@@ -22,18 +25,26 @@ Symposium on Security and Privacy (SP'19)
 - K. Kohls, K. Jansen, D. Rupprecht, T. Holz, and C. Pöpper  
 **On the Challenges of Geographical Avoidance for Tor**  
 Network and Distributed System Security Symposium (NDSS'19)
+
+### 2018
 - K. Kohls and C. Pöpper  
 **DigesTor: Comparing Passive Traffic Analysis Attacks on Tor**  
 European Symposium on Research in Computer Security (ESORICS'18)
+
+### 2017
 - K. Kohls and C. Pöpper  
 **Poster: Traffic Analysis Attacks in Anonymity Networks**  
 Asia Conference on Computer and Communications Security (ASIACCS'17)
+
+### 2016
 - A. Zarras, K. Kohls, M. Dürmuth, and C. Pöpper  
 **Neuralyzer: Flexible Expiration Times for the Revocation of Online Data**  
 Conference on Data and Application Security and Privacy (CODASPY'16)
 - K. Kohls, T. Holz, D. Kolossa, and C. Pöpper  
 **Skypeline: Robust Hidden Data Transmission for VoIP**  
 Asia Conference on Computer and Communications Security (ASIACCS'16)
+
+### Before PhD
 - P. Bök, K. Kohls, D. Behnke, and C. Wietfeld  
 **Distributed Flow Permission Inspection for Mission-Critical Communication of Untrusted Autonomous Vehicles**  
 Vehicular Technology Conference (VTC'14)
