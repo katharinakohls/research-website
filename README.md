@@ -3,9 +3,13 @@ Postdoctoral researcher in Computer Security at Ruhr University Bochum, Excellen
 
 ## Publications
 
-- D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper, **IMP4GT: IMPersonation Attacks in 4G NeTworks**, In Network and Distributed System Security Symposium, NDSS ’20, San Diego, CA, USA, Feb. 2020
+<!-- - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper..
+**IMP4GT: IMPersonation Attacks in 4G NeTworks**..
+Network and Distributed System Security Symposium, NDSS ’20, San Diego, CA, USA, Feb. 2020 -->
 
-- L. Schönherr, K. Kohls, S. Zeiler, T. Holz, and D. Kolossa, **Adversarial Attacks Against Automatic Speech Recognition Systems via Psychoacoustic Hiding**, NDSS ’19
+- L. Schönherr, K. Kohls, S. Zeiler, T. Holz, and D. Kolossa..
+**Adversarial Attacks Against Automatic Speech Recognition Systems via Psychoacoustic Hiding**..
+Network ad Distributed System Security Symposium (NDSS'19)
 
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper. Breaking LTE on Layer Two. In
 IEEE Symposium on Security and Privacy, SP ’19, San Francisco, CA, USA, May
