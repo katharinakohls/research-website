@@ -1,7 +1,6 @@
 ---
 title: Publications
 layout: default
-theme: jekyll-theme-cayman
 order: 2
 ---
 
