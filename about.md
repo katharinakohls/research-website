@@ -4,9 +4,9 @@ layout: default
 order: 4
 ---
 
-<ul>
+<ul class="nav-ul">
     {% for link in site.data.navigation %}
-    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+    <li class="nav-li"><a href="{{ link.url }}">{{ link.title }}</a></li>
     {% endfor %}
 </ul>
 
