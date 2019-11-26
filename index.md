@@ -1,6 +1,7 @@
 ---
 title: Katharina Kohls, PhD
 layout: default
+order: 1
 ---
 
 <title>{{ page.title }} | {{ site.title }}</title>
