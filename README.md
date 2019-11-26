@@ -1,9 +1,11 @@
 # Katharina Kohls, PhD
-Postdoctoral researcher in Computer Security at Ruhr University Bochum, Excellence Cluster [CASA](https://casa.rub.de/en.html)
+Chair for Systems Security, Excellence Cluster [CASA](https://casa.rub.de/en.html) Syber Security in the Age of Large-Scale Adversaries
 
 ## Publications
 
 ### 2020
+- **Under Review**
+- **Under Review**
 
 <!-- - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper..
 **IMP4GT: IMPersonation Attacks in 4G NeTworks**..
