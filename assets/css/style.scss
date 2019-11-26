@@ -3,7 +3,7 @@
 @import "{{ site.theme }}";
 
 
-nav-ul {
+ul.nav-ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -12,11 +12,11 @@ nav-ul {
   background-color: #f3f3f3;
 }
 
-nav-li {
+li.nav-li {
   float: left;
 }
 
-nav-li a {
+li.nav-li a {
   display: block;
   color: #666;
   text-align: center;
@@ -24,6 +24,6 @@ nav-li a {
   text-decoration: none;
 }
 
-nav-li a:hover {
+li.nav-li a:hover {
   background-color: #666;
 } 
