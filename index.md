@@ -9,8 +9,7 @@ order: 1
 Markdown **content** for the website.
 
 <ul>
-  {% assign mypages = site.pages | sort: "order" %}
-    {% for page in mypages %}
-      <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
+    {% for link in site.data.navigation %}
+    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
     {% endfor %}
 </ul>
