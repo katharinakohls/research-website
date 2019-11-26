@@ -6,8 +6,6 @@ order: 1
 
 <title>{{ page.title }} | {{ site.title }}</title>
 
-Markdown **content** for the website.
-
 <ul>
     {% for link in site.data.navigation %}
     <li><a href="{{ link.url }}">{{ link.title }}</a></li>
