@@ -13,14 +13,3 @@ Markdown **content** for the website.
     <li><a href="{{ link.url }}">{{ link.title }}</a></li>
     {% endfor %}
 </ul>
-
-
-<ul>
-  {% assign mypages = site.pages | sort: "order" %}
-    {% for page in mypages %}
-    <li><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></li>
-    {% endfor %}
-  </ul>
-
-
-Trololo
