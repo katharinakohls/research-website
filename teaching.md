@@ -12,6 +12,8 @@ order: 3
     {% endfor %}
 </ul>
 
+# Teaching
+
 - Seminar  
 **Applied Privacy and Anonymity**  
 Summer 2020
