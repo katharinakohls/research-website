@@ -1,3 +1,11 @@
+---
+title: Publications
+layout: default
+order: 2
+---
+
+<title>{{ page.title }} | {{ site.title }}</title>
+
 ## Publications
 
 ### 2020
