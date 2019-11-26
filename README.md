@@ -1,6 +1,6 @@
 
-### Chair for Systems Security
-### Excellence Cluster [CASA](https://casa.rub.de/en.html) - Cyber Security in the Age of Large-Scale Adversaries
+Chair for Systems Security  
+Excellence Cluster [CASA](https://casa.rub.de/en.html) - Cyber Security in the Age of Large-Scale Adversaries
 
 ## Publications
 
