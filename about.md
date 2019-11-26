@@ -15,4 +15,5 @@ I am a postdoctoral researcher at the [Systems Security Chair](https://www.sysse
 
 My research focuses on information leaks in privacy enhancing technologies. One example of this is Tor, where the persisting threat of traffic analysis attacks remains and open issue and motivates research on new offensive and defensive techniques. Besides dedicated anonymity systems, I am also interested in the consequences of transferring well-known attacks to new contexts like LTE.
 
- ![kk](kk.jpg)
+<img style="float: right;" src="kk.jpg">
+ 
