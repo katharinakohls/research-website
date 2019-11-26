@@ -60,3 +60,6 @@ International Conference on Computer Communications and Networks (ICCCN'12)
 GLOBECOM Workshops (GC Wkshps'11)
 
 ## About
+I am a postdoctoral researcher at the systems security chair of the Ruhr University Bochum within the excellence cluster for Cyber Security in the Age of Large-Scale Adversaries (CASA).  
+
+My research focuses on information leaks in privacy enhancing technologies. One example of this is Tor, where the persisting threat of traffic analysis attacks remains and open issue and motivates research on new offensive and defensive techniques. Besides dedicated anonymity systems, I am also interested in the consequences of transferring well-known attacks to new contexts like LTE.
