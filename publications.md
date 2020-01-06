@@ -15,15 +15,15 @@ order: 2
 ## Publications
 
 ### 2020
-
 - Anonymous  
-**Under Review**
+**Under Review**  
 Privacy Enhancing Technologies Symposium (PoPETS'20)
-
-### 2020
+- Anonymous  
+**Under Review**  
+USENIX Security Symposium (USENIX'20)
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper  
 **IMP4GT: IMPersonation Attacks in 4G NeTworks**  
-Network and Distributed System Security Symposium (NDSS'20) (to appear)
+Network and Distributed System Security Symposium (NDSS'20, to appear)
 
 ### 2019
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper  
