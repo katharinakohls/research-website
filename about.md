@@ -1,7 +1,7 @@
 ---
 title: About
 layout: default
-order: 4
+order: 5
 ---
 
 <ul class="nav-ul">
