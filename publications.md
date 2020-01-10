@@ -12,7 +12,7 @@ order: 2
     {% endfor %}
 </ul>
 
-## Publications
+# Publications
 
 ### 2020
 - Anonymous  
