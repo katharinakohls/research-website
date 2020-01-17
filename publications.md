@@ -31,7 +31,7 @@ Network and Distributed System Security Symposium (NDSS'20, to appear)
 Symposium on Security and Privacy (SP'19)  
 [Website](http://www.alter-attack.net/), [PDF](https://www.syssec.ruhr-uni-bochum.de/media/infsec/veroeffentlichungen/2018/06/28/breaking_lte_on_layer_two.pdf)
 - K. Kohls and C. Pöpper  
-**Poster: Application-Layer routing Attacks on Tor**  
+**Poster: Application-Layer Routing Attacks on Tor**  
 Symposium on Security and Privacy (SP'19)  
 [Poster](https://www.syssec.ruhr-uni-bochum.de/media/infsec/veroeffentlichungen/2019/08/05/oakland_19_version.pdf)
 - K. Kohls, D. Rupprecht, T. Holz, and C. Pöpper  
