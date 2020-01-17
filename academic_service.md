@@ -28,7 +28,7 @@ order: 4
 - USENIX Security Symposium (USENIX 2017)
 - Network and Distributed System Security Symposium (NDSS 2017)
 - European Symposium on Research in Computer Security (ESORICS 2017)
-- EEE European Symposium on Security and Privacy (EuroSP 2017)
+- IEEE European Symposium on Security and Privacy (EuroSP 2017)
 - ACM Conference on Security and Privacy in Wireless and Mobile Networks (WiSec 2017)
 - USENIX Security Symposium (USENIX 2016)
 - Network and Distributed System Security Symposium (NDSS 2016)
