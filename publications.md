@@ -20,7 +20,7 @@ order: 2
 USENIX Security Symposium (USENIX'20)
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper  
 **IMP4GT: IMPersonation Attacks in 4G NeTworks**  
-Network and Distributed System Security Symposium (NDSS'20, to appear)
+Network and Distributed System Security Symposium (NDSS'20)
 
 ### 2019
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper  
