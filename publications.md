@@ -17,10 +17,12 @@ order: 2
 ### 2020
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper  
 **Call Me Maybe: Eavesdropping Encrypted LTE Calls With ReVoLTE**  
-USENIX Security Symposium (USENIX'20)
+USENIX Security Symposium (USENIX'20)  
+[Website](https://revolte-attack.net/), [PDF](https://www.infsec.ruhr-uni-bochum.de/media/emma/veroeffentlichungen/2020/08/19/ReVoLTE-USENIX20.pdf)
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper  
 **IMP4GT: IMPersonation Attacks in 4G NeTworks**  
-Network and Distributed System Security Symposium (NDSS'20)
+Network and Distributed System Security Symposium (NDSS'20)  
+[Website](https://imp4gt-attacks.net/), [PDF](https://www.infsec.ruhr-uni-bochum.de/media/emma/veroeffentlichungen/2020/02/17/IMP4GT-NDSS20.pdf)
 
 ### 2019
 - D. Rupprecht, K. Kohls, T. Holz, and C. Pöpper  
