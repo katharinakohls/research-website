@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Katharina Kohls</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <link href="css/style.min.css" rel="stylesheet">
+      </head>
+
+<body>
+    <header>
+ 
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark unique-color">
+          <div class="smooth-scroll">
+            <a class="navbar-brand smooth-scroll" href="#title">Home</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <!-- Left -->
+              <ul class="navbar-nav mr-auto smooth-scroll">
+                <li class="nav-item">
+                  <a class="nav-link" href="publications.html">Publications</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/academic_service.html">Academic Service</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/teaching.html">Teaching</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="/presentation_resources.html">Presentation Resources</a>
+                </li> -->
+              </ul>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <br>
+
+  <div class="card card-image" style="background-image: url(images/IMG_3169_30.jpg);">
+    <div class="text-black text-center rgba-white-strong py-5 px-4">
+      <div class="py-5">
+        <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Katharina Kohls, PhD</strong></h2>
+        <h3 class="mb-4 pb-2 px-md-5 mx-md-5">Assistant Professor<br>Radboud University Nijmegen</h3>
+      </div>
+    </div>
+  </div>
+
+    <br>
+    
+
+  <div class="container" id="intro">
+    <h1 class="display-4">Academic Service</h1>
+    <hr>
+
+    <br>
+
+    <div class="row">
+      <div class="col-sm-7">
+        <h2 id="program-committee-member">Program Committee Member</h2>
+        <ul>
+          <li>European Symposium on Security and Privacy 2021 (EuroS&P 2021)</li>
+          <li>Financial Cryptography and Data Security 2021 (FC 2021)</li>
+          <li>Network and Distributed System Security Symposium (NDSS 2021)</li>
+          <li>Workshop on Privacy in the Electronic Society (WPES 2020)</li>
+        </ul>
+        
+        <h2 id="external-reviews">External Reviews</h2>
+        <ul>
+          <li>IEEE Symposium on Security and Privacy, S&P, 2018, 2020</li>
+          <li>ACM Conference on Computer and Communications Security, CCS, 2015, 2016</li>
+          <li>USENIX Security Symposium, USENIX, 2016-2019</li>
+          <li>Network and Distributed System Security Symposium, NDSS, 2016-2019</li>
+          <li>IEEE European Symposium on Security and Privacy, EuroS&P 2016, 2017</li>
+          <li>Privacy Enhancing Technologies Symposium, PoPETs, 2020-2021</li>
+          <li>ACM Conference on Security and Privacy in Wireless and Mobile Networks, WiSec, 2017, 2019</li>
+          <li>European Symposium on Research in Computer Security, ESORICS, 2017-2019</li>
+        </ul>
+        
+        <h2 id="other">Other</h2>
+        <ul>
+          <li>Shadow PC<br />
+        IEEE Symposium on Security and Privacy (SP 2020)</li>
+        </ul>
+
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script>
+    $('.navbar-collapse a').click(function () {
+      $(".navbar-collapse").collapse('hide');
+    });
+  </script>
+  <script>
+    $(".smooth-scroll").on('click', 'a', function (event) {
+      event.preventDefault();
+      var elAttr = $(this).attr('href');
+      var offset = ($(this).attr('data-offset') ? $(this).attr('data-offset') : 0);
+      var fixedTop = $('.navbar.fixed-top');
+      if (fixedTop && fixedTop.length) {
+        offset = fixedTop.outerHeight();
+      }
+      $('body,html').animate({
+        //scrollTop: $(elAttr).offset().top - offset
+        scrollTop: $(elAttr).offset().top - 56
+      }, 700);
+    });
+  </script>
+</body>
+
+</html>

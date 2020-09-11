@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Katharina Kohls</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark unique-color">
+      <div class="smooth-scroll">
+        <a class="navbar-brand smooth-scroll" href="#title">Home</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto smooth-scroll">
+            <li class="nav-item">
+              <a class="nav-link" href="publications.html">Publications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/academic_service.html">Academic Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/teaching.html">Teaching</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/presentation_resources.html">Presentation Resources</a>
+            </li> -->
+          </ul>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <br>
+
+  <div class="card card-image" style="background-image: url(images/IMG_3169_30.jpg);">
+    <div class="text-black text-center rgba-white-strong py-5 px-4">
+      <div class="py-5">
+        <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Katharina Kohls, PhD</strong></h2>
+        <h3 class="mb-4 pb-2 px-md-5 mx-md-5">Assistant Professor<br>Radboud University Nijmegen</h3>
+      </div>
+    </div>
+  </div>
+
+    <br>
+
+    
+
+    <div class="container">
+      <h1 class="display-4">About Me</h1>
+      <hr>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="images/kk.jpg" width="80%" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-sm-6">
+          <p>
+            I'm an assistant professor in the Digital Security Group of the Radboud University in Nijmegen (NL). Before this, I was a postdoctoral researcher at the Systems Security Chair of the Ruhr University Bochum within the excellence cluster for Cyber Security in the Age of Large-Scale Adversaries <a href="https://casa.rub.de/en/">CASA</a>.
+            <br>
+            <br>
+            My research focuses on information leaks in privacy enhancing technologies. One example of this is Tor, where the persisting threat of traffic analysis attacks remains and open issue and motivates research on new offensive and defensive techniques. Besides dedicated anonymity systems, I am also interested in the consequences of transferring well-known attacks to new contexts like LTE.
+          </p>
+          
+          <!-- <p class="font-weight-bold">I'm hiring! Are you interested in the privacy and anonymity of networks, or mobile network security? We offer fully funded PhD positions at the Radboud University in the Digital Security Group!</p> -->
+        </div>
+      </div>
+
+      <br>
+
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">I'm hiring! </h4>
+        <p>Are you interested in the privacy and anonymity of networks, or mobile network security? We offer fully funded PhD positions at the Radboud University in the Digital Security Group!</p>
+      </div>
+    </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script>
+    $('.navbar-collapse a').click(function () {
+      $(".navbar-collapse").collapse('hide');
+    });
+  </script>
+  <script>
+    $(".smooth-scroll").on('click', 'a', function (event) {
+      event.preventDefault();
+      var elAttr = $(this).attr('href');
+      var offset = ($(this).attr('data-offset') ? $(this).attr('data-offset') : 0);
+      var fixedTop = $('.navbar.fixed-top');
+      if (fixedTop && fixedTop.length) {
+        offset = fixedTop.outerHeight();
+      }
+      $('body,html').animate({
+        //scrollTop: $(elAttr).offset().top - offset
+        scrollTop: $(elAttr).offset().top - 56
+      }, 700);
+    });
+  </script>
+</body>
+
+</html>
