@@ -6993,7 +6993,6 @@ footer.page-footer {
   position:fixed;
   bottom: 0;
   width: 100%;
-  z-index:999999999;
   color: #fff; }
   footer.page-footer .container-fluid {
     width: auto; }
