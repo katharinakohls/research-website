@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Katharina Kohls</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <link href="css/style.min.css" rel="stylesheet">
+      </head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+          <div class="smooth-scroll">
+            <a class="navbar-brand smooth-scroll" href="index.html" onclick="window.open('/index.html', '_self');">Home</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto smooth-scroll">
+              <!-- Left -->
+              <!-- <ul class="navbar-nav mr-auto smooth-scroll"> -->
+                <li class="nav-item">
+                  <a class="nav-link" href="/publications.html" onclick="window.open('/publications.html', '_self');">Publications</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/academic_service.html" onclick="window.open('/academic_service.html', '_self');">Academic Service</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/teaching.html" onclick="window.open('/teaching.html', '_self');">Teaching</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/projects.html" onclick="window.open('/projects.html', '_self');">Projects</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/guides.html" onclick="window.open('/guides.html', '_self');">Guides</a>
+                </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <br>
+
+      <div class="card card-image" style="background-image: url(images/banner1.png);">
+        <!-- <div class="text-black text-center rgba-white-strong py-5 px-4"> -->
+          <div class="text-white text-center">
+      <div class="py-5">
+        <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Katharina Kohls, PhD</strong></h2>
+        <h3 class="mb-4 pb-2 px-md-5 mx-md-5">Assistant Professor<br>Radboud University, Nijmegen, NL</h3>
+      </div>
+    </div>
+  </div>
+
+    <br>
+
+    <div class="container" id="intro">
+      <h1 class="display-4">Open5GS Virtual Setup</h1>
+      <hr>
+  
+      <br>
+
+      <h1 id="open5gs-setup">Open5GS Setup</h1>
+<p><em>Last updated: 20.07.2021</em>  </p>
+<h2 id="preparation">Preparation</h2>
+<h3 id="general-preparation">General Preparation</h3>
+<h4 id="virtualbox-install">VirtualBox Install</h4>
+<ul>
+<li>Get VirtualBox</li>
+<li>Load a Linux image (this guide is for Ubuntu 20.04)</li>
+<li>Create two VMs using the image</li>
+<li>Go for the minimal install</li>
+</ul>
+<h4 id="network-settings">Network Settings</h4>
+<ul>
+<li>Make sure the machines are stopped</li>
+<li>In the <em>global</em> settings, go the File -&gt; Preferences -&gt; Network and add a new NAT network</li>
+<li>Settings: Enable IPv6, keep all other options, and assign a reasonable name</li>
+<li>For each VM: go to Settings -&gt; Network and select NAT network and the NAT that was just created.</li>
+<li>For <em>one</em> machine make sure to go to the advanced settings and refresh the MAC address, otherwise both machines are the same and get the same IP address</li>
+</ul>
+<p>After the above steps, you are ready to set up both machines individually.</p>
+<h3 id="machine-1-open5gs">Machine 1: Open5Gs</h3>
+<h4 id="installation">Installation</h4>
+<h5 id="requirements">Requirements</h5>
+<p>Update the machine:</p>
+<pre><code class="lang-bash"><span class="hljs-attribute">sudo apt update</span>
+</code></pre>
+<p>Install and enable mongodb:</p>
+<pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> mongodb
+sudo systemctl <span class="hljs-keyword">start</span> mongodb
+sudo systemctl <span class="hljs-keyword">enable</span> mongodb
+</code></pre>
+<p>Install requirements:</p>
+<pre><code class="lang-bash">sudo apt install python3-pip python3-setuptools python3-wheel ninja-build build-essential flex bison git libsctp-<span class="hljs-built_in">dev</span> libgnutls28-<span class="hljs-built_in">dev</span> libgcrypt-<span class="hljs-built_in">dev</span> libssl-<span class="hljs-built_in">dev</span> libidn11-<span class="hljs-built_in">dev</span> libmongoc-<span class="hljs-built_in">dev</span> libbson-<span class="hljs-built_in">dev</span> libyaml-<span class="hljs-built_in">dev</span> libnghttp2-<span class="hljs-built_in">dev</span> libmicrohttpd-<span class="hljs-built_in">dev</span> libcurl4-gnutls-<span class="hljs-built_in">dev</span> libnghttp2-<span class="hljs-built_in">dev</span> libtins-<span class="hljs-built_in">dev</span> meson
+</code></pre>
+<h5 id="build-open5gs-and-test">Build Open5Gs and test</h5>
+<p>We will build Open5Gs from source so we can make changes later on:</p>
+<pre><code class="lang-bash">git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/open5gs/open5gs
+<span class="hljs-keyword">cd</span> open5gs
+meson build --prefix=`<span class="hljs-keyword">pwd</span>`/install
+ninja -C build
+</code></pre>
+<p>Run the tun script right after install:  </p>
+<pre><code class="lang-bash">sudo .<span class="hljs-regexp">/../</span>Desktop<span class="hljs-regexp">/5gs_tun_setup.sh</span>
+</code></pre>
+<p>To test the compilation, run:  </p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> build
+meson <span class="hljs-built_in">test</span> -v
+</code></pre>
+<p>When all tests succeeded, you can proceed with the install step:  </p>
+<pre><code class="lang-bash">ninja <span class="hljs-keyword">install</span>
+</code></pre>
+<h5 id="setup-of-the-webui">Setup of the WebUI</h5>
+<pre><code class="lang-bash">sudo apt install curl
+curl -fsSL http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/setup_14.<span class="hljs-keyword">x</span> | sudo -E bash -
+sudo apt install nodejs
+<span class="hljs-keyword">cd</span> open5gs/webui/
+npm ci --<span class="hljs-keyword">no</span>-optional
+</code></pre>
+<p>Run the WebUI via</p>
+<pre><code class="lang-bash">npm <span class="hljs-keyword">run</span><span class="bash"> dev</span>
+</code></pre>
+<p>You have now finished the build procedure. We will continue with setting up the <em>second</em> VM and UERANSIM.</p>
+<h3 id="machine-2-ueransim">Machine 2: UERANSIM</h3>
+<h4 id="requirements">Requirements</h4>
+<p>Install the requirements:</p>
+<pre><code class="lang-bash"><span class="hljs-comment">sudo</span> <span class="hljs-comment">apt</span> <span class="hljs-comment">install</span> <span class="hljs-comment">git</span> <span class="hljs-comment">make</span> <span class="hljs-comment">gcc</span> <span class="hljs-comment">g</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-comment">libsctp</span><span class="hljs-literal">-</span><span class="hljs-comment">dev</span> <span class="hljs-comment">lksctp</span><span class="hljs-literal">-</span><span class="hljs-comment">tools</span> <span class="hljs-comment">iproute2</span>
+</code></pre>
+<p>UERANSIM does not work with the apt version of cmake, that&#39;s why we need to install snap and the snap version of cmake:  </p>
+<pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> snap
+sudo snap <span class="hljs-keyword">install</span> cmake <span class="hljs-comment">--classic</span>
+</code></pre>
+<h4 id="build">Build</h4>
+<p>Get the sources and build:  </p>
+<pre><code class="lang-bash"><span class="hljs-keyword">cd</span> ~
+git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/aligungr/UERANSIM
+<span class="hljs-keyword">cd</span> UERANSIM
+<span class="hljs-keyword">make</span>
+</code></pre>
+<h3 id="network-configuration">Network Configuration</h3>
+<h4 id="machine-1-open5gs">Machine 1: Open5Gs</h4>
+<p>Get the IP address of the Open5Gs machine, for example using net-tools:  </p>
+<pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> net-tools
+ifconfig
+</code></pre>
+<p>Example:</p>
+<pre><code class="lang-bash">fiveg@fiveg-VirtualBox:~/open5gs$ ifconfig
+<span class="hljs-symbol">enp0s3:</span> flags=<span class="hljs-number">4163</span>&lt;<span class="hljs-meta">UP</span>,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class="hljs-number">1500</span>
+        inet <span class="hljs-number">10.0</span><span class="hljs-meta">.2</span><span class="hljs-meta">.4</span>  netmask <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.0</span>  broadcast <span class="hljs-number">10.0</span><span class="hljs-meta">.2</span><span class="hljs-meta">.255</span>
+</code></pre>
+<p>Make a backup of the original configuration:</p>
+<pre><code class="lang-bash">cp <span class="hljs-regexp">/home/</span>fiveg<span class="hljs-regexp">/open5gs/</span>build<span class="hljs-regexp">/configs/</span>sample.yaml <span class="hljs-regexp">/home/</span>fiveg<span class="hljs-regexp">/open5gs/</span>build<span class="hljs-regexp">/configs/</span>sample.yaml.backup
+</code></pre>
+<p>Then adjust the IP of the AMF NGAP</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">amf</span>:
+    <span class="hljs-selector-tag">sbi</span>:
+      <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">addr</span>: 127<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.5</span>
+        <span class="hljs-selector-tag">port</span>: 7777
+    <span class="hljs-selector-tag">ngap</span>:
+      <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">addr</span>: 10<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.2</span><span class="hljs-selector-class">.4</span>
+</code></pre>
+<p>Put in the address we found via ifconfig</p>
+<h4 id="machine-2-ueransim">Machine 2: UERANSIM</h4>
+<p>Go to the config directory and create a copy of the configs:  </p>
+<pre><code class="lang-bash">cd /home/fiveg/UERANSIM/config
+cp open5gs-gnb<span class="hljs-selector-class">.yaml</span> virtualbox_open5gs-gnb<span class="hljs-selector-class">.yaml</span>
+cp open5gs-ue<span class="hljs-selector-class">.yaml</span> virtualbox_open5gs-ue.yaml
+</code></pre>
+<p>Make the following changes to the files:</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">nano</span> <span class="hljs-selector-tag">virtualbox_open5gs-gnb</span><span class="hljs-selector-class">.yaml</span>
+</code></pre>
+<p>First, put in the IP of <em>this</em> machine:  </p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">linkIp</span>: 10<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.2</span><span class="hljs-selector-class">.15</span>
+<span class="hljs-selector-tag">ngapIp</span>: 10<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.2</span><span class="hljs-selector-class">.15</span>
+<span class="hljs-selector-tag">gtpIp</span>: 10<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.2</span><span class="hljs-selector-class">.15</span>
+</code></pre>
+<p>In the same file, put in the IP of the AMF in the Open5Gs box</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">amfConfigs</span>:
+  <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">address</span>: 10<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.2</span><span class="hljs-selector-class">.4</span>
+    <span class="hljs-selector-tag">port</span>: 38412
+</code></pre>
+<p>Start the gNB and UE with our adjusted config files: </p>
+<pre><code class="lang-bash">./build/nr-gnb -c <span class="hljs-built_in">config</span>/virtualbox_open5gs-gnb.yaml
+</code></pre>
+<p>Continue with the UE configuration:</p>
+<pre><code class="lang-bash">nano <span class="hljs-built_in">config</span>/virtualbox_open5gs-ue.yaml
+</code></pre>
+<p>Put in our own IP address to make sure that the UE finds the gNB during the cell search:</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">gnbSearchList</span>:
+  <span class="hljs-selector-tag">-</span> 10<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.2</span><span class="hljs-selector-class">.15</span>
+</code></pre>
+<p>Finally, we need to register the UE in the core network. You can access the required information from the UE configuration file, which should by default contain the following pieces:</p>
+<pre><code class="lang-bash"><span class="hljs-attribute">cat config/virtualbox_open5gs-ue.yaml
+
+...
+
+imsi</span>: 901700000000001
+<span class="hljs-attribute">key</span>: 465B5CE8B199B49FAA5F0A2EE238A6BC
+<span class="hljs-attribute">AMF</span>: 8000
+<span class="hljs-attribute">USIM</span>: OPc
+<span class="hljs-attribute">Operator Key</span>: E8ED289DEBA952E4283B54E88E6183CA
+</code></pre>
+<p><strong>Possible Error</strong><br>Connecting to 10.0.2.4:38412 failed. SCTP could not connect: Connection refused</p>
+<p>This might be fixed with port forwarding in the global NAT configuration.</p>
+<h2 id="startup">Startup</h2>
+<h3 id="machine-1-open5gs">Machine 1: Open5Gs</h3>
+<h4 id="prepare-the-tun-device">Prepare the TUN device</h4>
+<p><strong>Needs to be done after each reboot</strong>
+Put the following commands in a bash script, for example 5gs_tun_setup.sh on Desktop:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">ip</span> tuntap <span class="hljs-keyword">add</span> name ogstun mode tun
+<span class="hljs-built_in">ip</span> addr <span class="hljs-keyword">add</span> <span class="hljs-number">10.45</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>/<span class="hljs-number">16</span> dev ogstun
+<span class="hljs-built_in">ip</span> addr <span class="hljs-keyword">add</span> <span class="hljs-number">2001</span>:<span class="hljs-number">230</span>:cafe::<span class="hljs-number">1</span>/<span class="hljs-number">48</span> dev ogstun
+<span class="hljs-built_in">ip</span> link set ogstun <span class="hljs-meta">up</span>
+</code></pre>
+<p>Make the script executable:</p>
+<pre><code class="lang-bash">sudo chmod +x Desktop/<span class="hljs-number">5</span>gs_tun_setup.sh
+</code></pre>
+<p>After each reboot, run the script as root:</p>
+<pre><code class="lang-bash">sudo .<span class="hljs-regexp">/home/</span>fiveg<span class="hljs-regexp">/Desktop/</span><span class="hljs-number">5</span>gs_tun_setup.sh
+</code></pre>
+<h4 id="run-the-webui">Run the WebUI</h4>
+<pre><code class="lang-bash"><span class="hljs-keyword">cd</span> /home/<span class="hljs-keyword">lab</span>/open5gs/webui/ &amp;&amp; npm <span class="hljs-keyword">run</span> dev
+</code></pre>
+<p>After that, an admin interface shows up at 127.0.0.1:3000</p>
+<ul>
+<li>User: admin</li>
+<li>Password: 1423</li>
+<li>Use this to register a new user. For that you need the IMSI, keys, etc.</li>
+<li>Currently the default user of UERANSIM is registered and the setup should work out of the box. New UEs need to be added when this is adjusted.</li>
+</ul>
+<h4 id="run-the-open5gs-core-all-of-it-">Run the Open5GS Core (all of it)</h4>
+<p>cd /home/lab/open5gs/build/tests/app/ &amp;&amp; ./5gc</p>
+<h3 id="machine-2-ueransim">Machine 2: UERANSIM</h3>
+<h4 id="run-the-ueransim-gnb-and-ue">Run the UERANSIM gNB and UE</h4>
+<pre><code class="lang-bash">cd <span class="hljs-regexp">/home/</span>lab<span class="hljs-regexp">/UERANSIM/</span>build
+</code></pre>
+<p>In a first terminal, start the gNB:</p>
+<pre><code class="lang-bash">./nr-gnb -c ../<span class="hljs-built_in">config</span>/virtualbox_open5gs-gnb.yaml
+</code></pre>
+<p>In a second terminal, start the UE:</p>
+<pre><code class="lang-bash">sudo ./nr-ue -c ../<span class="hljs-built_in">config</span>/virtualbox_open5gs-ue.yaml
+</code></pre>
+<p>It&#39;s possible to start multiple UEs instead of just one with</p>
+<pre><code class="lang-bash">nr-ue -c myconfig<span class="hljs-selector-class">.yaml</span> -n <span class="hljs-number">10</span>
+</code></pre>
+<p>Please note: All of the users need to be registered, the IMSIs for new users are simply incremented starting from the initial IMSI noted in the configuration.</p>
+<h2 id="doing-things">Doing Things</h2>
+<h3 id="controlling-the-ue-and-gnb">Controlling the UE and gNB</h3>
+<p>Start the CLI for the UE using the identity of a component. Existing nodes can be displayed via</p>
+<pre><code class="lang-bash">./nr-cli --dump
+UERANSIM-gnb<span class="hljs-number">-901</span><span class="hljs-number">-70</span><span class="hljs-number">-1</span>
+imsi<span class="hljs-number">-901700000000001</span>
+</code></pre>
+<p>Then use the identity to connect to the CLI of a node, e.g.,</p>
+<pre><code class="lang-bash">./nr-<span class="hljs-keyword">cli</span> imsi<span class="hljs-number">-901700000000001</span> <span class="hljs-meta"># UE</span>
+./nr-<span class="hljs-keyword">cli</span> imsi<span class="hljs-number">-901700000000001</span> <span class="hljs-meta"># gNB</span>
+</code></pre>
+<p>You can use <code>commands</code> to list the available commands for the UE or gNB. An example output looks like this:</p>
+<pre><code class="lang-bash">lab@lab-2356gcg:~/UERANSIM/build$ ./nr-cli imsi-901700000000001
+<span class="hljs-comment">--------------------------------------------------------------------------------------------</span>
+
+$ commands
+info           | <span class="hljs-keyword">Show</span> <span class="hljs-keyword">some</span> information about the UE
+<span class="hljs-keyword">status</span>         | <span class="hljs-keyword">Show</span> <span class="hljs-keyword">some</span> <span class="hljs-keyword">status</span> information about the UE
+timers         | Dump <span class="hljs-keyword">current</span> <span class="hljs-keyword">status</span> <span class="hljs-keyword">of</span> the timers <span class="hljs-keyword">in</span> the UE
+rls-state      | <span class="hljs-keyword">Show</span> <span class="hljs-keyword">status</span> information about RLS
+coverage       | Dump available cells <span class="hljs-keyword">and</span> PLMNs <span class="hljs-keyword">in</span> the coverage
+ps-establish   | <span class="hljs-keyword">Trigger</span> a PDU <span class="hljs-keyword">session</span> establishment <span class="hljs-keyword">procedure</span>
+ps-<span class="hljs-keyword">list</span>        | <span class="hljs-keyword">List</span> all PDU sessions
+ps-<span class="hljs-keyword">release</span>     | <span class="hljs-keyword">Trigger</span> a PDU <span class="hljs-keyword">session</span> <span class="hljs-keyword">release</span> <span class="hljs-keyword">procedure</span>
+ps-<span class="hljs-keyword">release</span>-all | <span class="hljs-keyword">Trigger</span> PDU <span class="hljs-keyword">session</span> <span class="hljs-keyword">release</span> procedures <span class="hljs-keyword">for</span> all active sessions
+deregister     | Perform a de-registration <span class="hljs-keyword">by</span> the UE
+<span class="hljs-comment">--------------------------------------------------------------------------------------------</span>
+</code></pre>
+<pre><code class="lang-bash">lab@lab-2356gcg:~/UERANSIM/build$ ./nr-cli UERANSIM-gnb-901-70-1
+<span class="hljs-comment">--------------------------------------------------------------------------------------------</span>
+$ commands
+info       | <span class="hljs-keyword">Show</span> <span class="hljs-keyword">some</span> information about the gNB
+<span class="hljs-keyword">status</span>     | <span class="hljs-keyword">Show</span> <span class="hljs-keyword">some</span> <span class="hljs-keyword">status</span> information about the gNB
+amf-<span class="hljs-keyword">list</span>   | <span class="hljs-keyword">List</span> all AMFs associated <span class="hljs-keyword">with</span> the gNB
+amf-info   | <span class="hljs-keyword">Show</span> <span class="hljs-keyword">some</span> <span class="hljs-keyword">status</span> information about the given AMF
+ue-<span class="hljs-keyword">list</span>    | <span class="hljs-keyword">List</span> all UEs associated <span class="hljs-keyword">with</span> the gNB
+ue-<span class="hljs-keyword">count</span>   | Print the total <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> UEs connected the this gNB
+ue-<span class="hljs-keyword">release</span> | Request a UE <span class="hljs-keyword">context</span> <span class="hljs-keyword">release</span> <span class="hljs-keyword">for</span> the given UE
+<span class="hljs-comment">--------------------------------------------------------------------------------------------</span>
+</code></pre>
+<h3 id="internet-connection">Internet Connection</h3>
+<p><code>uesimtun0</code> is the default network interface that gets created automatically with running UERANSIM.</p>
+<p>You can find the PDU Session IP and TUN address in the UE logs:  </p>
+<pre><code class="lang-bash"><span class="hljs-comment">[2021-07-20 11:44:41.591]</span> <span class="hljs-comment">[app]</span> <span class="hljs-comment">[info]</span> Connection setup for PDU session<span class="hljs-comment">[1]</span> <span class="hljs-keyword">is</span> successful, TUN interface<span class="hljs-comment">[uesimtun0, 10.45.0.3]</span> <span class="hljs-keyword">is</span> up.
+</code></pre>
+<p>The binder tool then allows to use the IP, for example: </p>
+<pre><code class="lang-bash">iveg@fiveg-VirtualBox:~/UERANSIM/build$ ./nr-binder <span class="hljs-number">10.45</span><span class="hljs-meta">.0</span><span class="hljs-meta">.3</span> ping google.com
+PING google.com (<span class="hljs-number">142.250</span><span class="hljs-meta">.187</span><span class="hljs-meta">.238</span>) <span class="hljs-number">56</span>(<span class="hljs-number">84</span>) bytes of data.
+<span class="hljs-number">64</span> bytes from lhr25s34-<span class="hljs-keyword">in</span>-f14<span class="hljs-meta">.1e100</span>.net (<span class="hljs-number">142.250</span><span class="hljs-meta">.187</span><span class="hljs-meta">.238</span>): icmp_seq=<span class="hljs-number">1</span> ttl=<span class="hljs-number">112</span> time=<span class="hljs-number">12.0</span> ms
+<span class="hljs-number">64</span> bytes from lhr25s34-<span class="hljs-keyword">in</span>-f14<span class="hljs-meta">.1e100</span>.net (<span class="hljs-number">142.250</span><span class="hljs-meta">.187</span><span class="hljs-meta">.238</span>): icmp_seq=<span class="hljs-number">2</span> ttl=<span class="hljs-number">112</span> time=<span class="hljs-number">12.0</span> ms
+<span class="hljs-number">64</span> bytes from lhr25s34-<span class="hljs-keyword">in</span>-f14<span class="hljs-meta">.1e100</span>.net (<span class="hljs-number">142.250</span><span class="hljs-meta">.187</span><span class="hljs-meta">.238</span>): icmp_seq=<span class="hljs-number">3</span> ttl=<span class="hljs-number">112</span> time=<span class="hljs-number">12.1</span> ms
+<span class="hljs-number">64</span> bytes from lhr25s34-<span class="hljs-keyword">in</span>-f14<span class="hljs-meta">.1e100</span>.net (<span class="hljs-number">142.250</span><span class="hljs-meta">.187</span><span class="hljs-meta">.238</span>): icmp_seq=<span class="hljs-number">4</span> ttl=<span class="hljs-number">112</span> time=<span class="hljs-number">11.8</span> ms
+</code></pre>
+<p>The tool is a bit buggy though, I could only run it with ping but not with curl.</p>
+<h3 id="monitoring-network-interfaces">Monitoring Network Interfaces</h3>
+<p>The default interfaces for Open5GS look as follows:  </p>
+<ul>
+<li>MongoDB   = 127.0.0.1 (subscriber data) - <a href="http://localhost:3000">http://localhost:3000</a></li>
+<li>MME-s1ap  = 127.0.0.2 :36412 for S1-MME</li>
+<li>MME-gtpc  = 127.0.0.2 :2123 for S11</li>
+<li>MME-frDi  = 127.0.0.2 :3868 for S6a</li>
+<li>SGWC-gtpc = 127.0.0.3 :2123 for S11</li>
+<li>SGWC-pfcp = 127.0.0.3 :8805 for Sxa</li>
+<li>SMF-gtpc  = 127.0.0.4 :2123 for S5c, N11</li>
+<li>SMF-gtpu  = 127.0.0.4 :2152 for N4u (Sxu)</li>
+<li>SMF-pfcp  = 127.0.0.4 :8805 for N4 (Sxb)</li>
+<li>SMF-frDi  = 127.0.0.4 :3868 for Gx auth</li>
+<li>SMF-sbi   = 127.0.0.4 :7777 for 5G SBI (N7,N10,N11)</li>
+<li>AMF-ngap  = 127.0.0.5 :38412 for N2</li>
+<li>AMF-sbi   = 127.0.0.5 :7777 for 5G SBI (N8,N12,N11)</li>
+<li>SGWU-pfcp = 127.0.0.6 :8805 for Sxa</li>
+<li>SGWU-gtpu = 127.0.0.6 :2152 for S1-U, S5u</li>
+<li>UPF-pfcp  = 127.0.0.7 :8805 for N4 (Sxb)</li>
+<li>UPF-gtpu  = 127.0.0.7 :2152 for S5u, N3, N4u (Sxu)</li>
+<li>HSS-frDi  = 127.0.0.8 :3868 for S6a, Cx</li>
+<li>PCRF-frDi = 127.0.0.9 :3868 for Gx</li>
+<li>NRF-sbi   = 127.0.0.10:7777 for 5G SBI</li>
+<li>AUSF-sbi  = 127.0.0.11:7777 for 5G SBI</li>
+<li>UDM-sbi   = 127.0.0.12:7777 for 5G SBI</li>
+<li>PCF-sbi   = 127.0.0.13:7777 for 5G SBI</li>
+<li>NSSF-sbi  = 127.0.0.14:7777 for 5G SBI</li>
+<li>BSF-sbi   = 127.0.0.15:7777 for 5G SBI</li>
+<li>UDR-sbi   = 127.0.0.20:7777 for 5G SBI</li>
+</ul>
+<h2 id="capturing-helpers">Capturing Helpers</h2>
+<ul>
+<li>run wireshark as root</li>
+<li>to avoid the subscriber traffic (!(ip.src == 127.0.0.1)) &amp;&amp; !(ip.dst == 127.0.0.1)</li>
+<li>not sure about the IPv6 stuff, but to get that out as well append &amp;&amp; !(ipv6.src == ::1)</li>
+<li>please note that filters might depend on your specific network setup</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://github.com/aligungr/UERANSIM/wiki/Configuration">UERANSIM Configuration</a></li>
+<li><a href="https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/">Build Open5GS</a></li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>Make sure you prepared the TUN</li>
+</ul>
+<h3 id="problems-with-libogscrypt">Problems with libogscrypt</h3>
+<p>Problem:  </p>
+<pre><code class="lang-bash"><span class="hljs-comment">"error while loading shared libraries: libogscrypt.so.2: cannot open shared object file: No such file or directory"</span>
+</code></pre>
+<p>Solution:  </p>
+<pre><code class="lang-bash">sudo <span class="hljs-keyword">sh </span>-c <span class="hljs-string">"echo /home/lab/open5gs/install/lib/x86_64-linux-gnu/ &gt; /etc/ld.so.conf.d/open5gs.conf"</span>
+</code></pre>
+<p><a href="https://open5gs.org/open5gs/docs/troubleshoot/02-now-in-github-issues/">Source</a></p>
+<p>Problem:</p>
+<pre><code class="lang-bash"><span class="hljs-number">07</span>/<span class="hljs-number">20</span> <span class="hljs-number">10</span>:<span class="hljs-number">31</span>:<span class="hljs-number">35.458</span>: [sock] <span class="hljs-symbol">ERROR:</span> socket bind(<span class="hljs-number">2</span>) [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.10</span>]:<span class="hljs-number">7777</span> failed (<span class="hljs-number">98</span>:Address already in use) (../<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">core</span>/<span class="hljs-title">ogs</span>-<span class="hljs-title">socket</span>.<span class="hljs-title">c</span>:109)</span>
+</code></pre>
+<p>Check for the process that uses the address/port</p>
+<pre><code class="lang-bash">sudo netstat -nlp <span class="hljs-string">| grep 7777</span>
+</code></pre>
+<p>Example:  </p>
+<pre><code class="lang-bash">fiveg@fiveg-VirtualBox:~/open5gs$ sudo netstat -nlp | grep 7777
+tcp       <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>127.0.0.10:7777         0.0.0.0:*               LISTEN      12991/open5gs-nrfd  
+tcp6      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>::1:7777                :::*                    LISTEN      12991/open5gs-nrfd
+</code></pre>
+<p>Then kill the process and start again:  </p>
+<pre><code class="lang-bash">sudo kill <span class="hljs-number">-9</span> <span class="hljs-number">12991</span>
+</code></pre>
+<h3 id="authentication-issues-in-ueransim">Authentication issues in UERANSIM</h3>
+<p>Problem:  </p>
+<pre><code class="lang-bash"><span class="hljs-selector-attr">[2021-07-16 16:07:38.192]</span> <span class="hljs-selector-attr">[nas]</span> <span class="hljs-selector-attr">[error]</span> <span class="hljs-attribute">Initial</span> Registration failed <span class="hljs-selector-attr">[FIVEG_SERVICES_NOT_ALLOWED]</span>
+</code></pre>
+<p>Make sure that the UE credentials entered in the admin interface are correct. The error means that the authentication with the core failed.</p>
+
+
+
+
+
+
+<footer class="page-footer font-small elegant-color-dark pt-4 mt-4">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <h5 class="text-uppercase">Katharina Kohls, Radboud University</h5>
+
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License"
+            style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><span
+          xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Illustrations </span> by <a
+          href="http://kkohls.org" property="cc:attributionName" rel="cc:attributionURL">Katharina Kohls</a> are
+        licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons
+          Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+      </div>
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <div class="col-md-6 mb-md-0 mb-3">
+        <h5 class="text-uppercase"><a href="/privacy.html" onclick="window.open('/privacy.html', '_self');">Privacy & Impressum</a></h5>
+        <p><a href="https://twitter.com/blister_green"><i class="fa fa-twitter fa-2x white-text"></i></a> <a href="mailto:kkohls@cs.ru.nl"><i class="fa fa-envelope fa-2x white-text"></i></a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script>
+$('.navbar-collapse a').click(function () {
+  $(".navbar-collapse").collapse('hide');
+});
+</script>
+<script>
+$(".smooth-scroll").on('click', 'a', function (event) {
+  event.preventDefault();
+  var elAttr = $(this).attr('href');
+  var offset = ($(this).attr('data-offset') ? $(this).attr('data-offset') : 0);
+  var fixedTop = $('.navbar.fixed-top');
+  if (fixedTop && fixedTop.length) {
+    offset = fixedTop.outerHeight();
+  }
+  $('body,html').animate({
+    //scrollTop: $(elAttr).offset().top - offset
+    scrollTop: $(elAttr).offset().top - 56
+  }, 700);
+});
+</script>
+</body>
+
+</html>
