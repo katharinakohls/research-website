@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Katharina Kohls</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <link href="css/style.min.css" rel="stylesheet">
+      </head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+          <div class="smooth-scroll">
+            <a class="navbar-brand smooth-scroll" href="index.html" onclick="window.open('/index.html', '_self');">Home</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto smooth-scroll">
+              <!-- Left -->
+              <!-- <ul class="navbar-nav mr-auto smooth-scroll"> -->
+                <li class="nav-item">
+                  <a class="nav-link" href="/publications.html" onclick="window.open('/publications.html', '_self');">Publications</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/academic_service.html" onclick="window.open('/academic_service.html', '_self');">Academic Service</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/teaching.html" onclick="window.open('/teaching.html', '_self');">Teaching</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/projects.html" onclick="window.open('/projects.html', '_self');">Projects</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/guides.html" onclick="window.open('/guides.html', '_self');">Guides</a>
+                </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <br>
+
+      <div class="card card-image" style="background-image: url(images/banner1.png);">
+        <!-- <div class="text-black text-center rgba-white-strong py-5 px-4"> -->
+          <div class="text-white text-center">
+      <div class="py-5">
+        <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Katharina Kohls, PhD</strong></h2>
+        <h3 class="mb-4 pb-2 px-md-5 mx-md-5">Assistant Professor<br>Radboud University, Nijmegen, NL</h3>
+      </div>
+    </div>
+  </div>
+
+    <br>
+
+    <div class="container" id="intro">
+        <h1 class="display-4">SIMtrace Card Emulation</h1>
+        <hr>
+    
+        <br>
+
+<h1 id="card-emulation-on-simtrace2-under-arch-manjaro">Card Emulation on simtrace2 under Arch/Manjaro</h1>
+<p>I ran into some troubles setting everything up under Manjaro/Arch and document the troubleshooting as follows. All of this is about card emulation via cardem.</p>
+<p>Problem: Using the default firmware, the phone shows &quot;invalid SIM card&quot; and handing over the commercial SIM does not work.</p>
+<h2 id="system-and-setup">System and Setup</h2>
+<pre><code class="lang-bash">$ lsb_release -a
+LSB <span class="hljs-string">Version:</span>    n/a
+Distributor <span class="hljs-string">ID:</span> ManjaroLinux
+<span class="hljs-string">Description:</span>    Manjaro Linux
+<span class="hljs-string">Release:</span>        <span class="hljs-number">21.0</span><span class="hljs-number">.4</span>
+<span class="hljs-string">Codename:</span>       Ornara
+</code></pre>
+<ol>
+<li>Smart card reader in the computer, commercial SIM attached, tested via pcsc_scan</li>
+<li>simtrace2 attached to the computer via USB, tested via dfu-util --list and ./simtrace2-list</li>
+<li>Oneplus 6T, rooted, attached via nano SIM breakout</li>
+<li>Remote control via adb (optional)</li>
+</ol>
+<h2 id="building-things">Building Things</h2>
+<p>I was not satisfied with the AUR version of libosmocore and needed to build the firmware manually, so the following documents how to first build <code>libosmocore</code>, then <code>simtrace</code>, and then the <code>cardem</code> firmware.</p>
+<h3 id="libosmocore">Libosmocore</h3>
+<p>Both AUR versions didn&#39;t really work for me, I&#39;ve tested with 2 due to 1 being out of date:</p>
+<pre><code class="lang-bash">2 aur/libosmocore-git 0.9.6.r165.ff20641<span class="hljs-string">-1</span> (<span class="hljs-string">+1</span> 0.00) 
+    Osmocom core library
+
+1 aur/libosmocore 1.3.0<span class="hljs-string">-1</span> (<span class="hljs-string">+15</span> 0.00) (Out-of-date: 2020<span class="hljs-string">-07</span><span class="hljs-string">-29</span>) 
+    core libs for osmocom
+</code></pre>
+<h4 id="building-libosmocore">Building libosmocore</h4>
+<p>Installing the requirements was straightforward for <code>libosmocore</code>, so I&#39;ll skip it here. After the requirements, follow the wiki tutorial:</p>
+<pre><code class="lang-bash">git clone gi<span class="hljs-variable">t:</span>//git.osmocom.org/libosmocore.git
+<span class="hljs-keyword">cd</span> libosmocore
+autoreconf -fi
+./configure
+<span class="hljs-keyword">make</span>
+sudo <span class="hljs-keyword">make</span> install
+</code></pre>
+<p>Then the first problem occured: although libosmocore was installed successfully, simtrace would not find it when running <code>./configure</code>:</p>
+<pre><code class="lang-bash">configure: <span class="hljs-literal">error</span>: <span class="hljs-keyword">Package</span> requirements (libosmocore &gt;= <span class="hljs-number">1.0</span>.<span class="hljs-number">0</span>) were <span class="hljs-keyword">not</span> met:
+<span class="hljs-keyword">Package</span> <span class="hljs-symbol">'libosmocore</span>', required by <span class="hljs-symbol">'virtual</span>:world', <span class="hljs-keyword">not</span> found
+</code></pre>
+<p>The reason for this is chaos in the pkgconf paths. For me, manually adding the path did not help because the <code>.pc</code> files were not in the right place:</p>
+<pre><code class="lang-bash">export PKG_CONFIG_PATH=<span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/lib/</span>pkgconfig
+</code></pre>
+<p>The solution in my case was copying the .pc files from the <code>libosmocore</code> dir to the default pkgconf path:</p>
+<pre><code class="lang-bash">sudo cp libosmocore/*.pc /usr/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">pkgconfig</span></span>
+</code></pre>
+<p>After that, the simtrace <code>./configure</code> worked and I could build it.</p>
+<h4 id="card-emulation">Card Emulation</h4>
+<p>To test different firmwares, I checked out <code>origin/hoernchen/simtrace_cardem</code> (others might also work) and built the cardem firmware manually. The cross-compile process on Arch/Manjaro introduced another problem resulting in stdlib not being found:</p>
+<pre><code class="lang-bash">libosmocore/source/backtrace.c:<span class="hljs-number">28</span>:<span class="hljs-number">10</span>: fatal error: stdlib.h: No such file <span class="hljs-literal">or</span> directory
+    <span class="hljs-number">28</span> | <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+        |          ^~~~~~~~~~
+</code></pre>
+<p>This can be fixed via </p>
+<pre><code class="lang-bash"><span class="hljs-attribute">sudo</span> pacman -S arm-<span class="hljs-literal">none</span>-eabi-gcc arm-<span class="hljs-literal">none</span>-eabi-newlib
+</code></pre>
+<p>I had <code>arm-none-eabi-gcc</code> installed, but only adding <code>arm-none-eabi-newlib</code> solved the problem for me. After that building the firmware worked well, in my particular setting I used</p>
+<pre><code class="lang-bash">make <span class="hljs-attr">APP=cardem</span> <span class="hljs-attr">BOARD=simtrace</span> <span class="hljs-attr">MEM=dfu</span>
+</code></pre>
+<p>After that I could flash the firmware and the card emulation worked.</p>
+<h2 id="flashing-and-runing-cardem">Flashing and Runing cardem</h2>
+<p>Check if the simtrace is detected and get the device information:</p>
+<pre><code class="lang-bash">dfu-util <span class="hljs-comment">--list</span>
+</code></pre>
+<p>Go to the simtrace repo:</p>
+<pre><code class="lang-bash">cd Documents<span class="hljs-regexp">/Repos/</span>simtrace2<span class="hljs-regexp">/host/</span>src
+</code></pre>
+<p>Flash the device, --device info might need to be adjusted:</p>
+<pre><code class="lang-bash"><span class="hljs-comment">dfu</span><span class="hljs-literal">-</span><span class="hljs-comment">util</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">device</span> <span class="hljs-comment">1d50:60e3</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">cfg</span> <span class="hljs-comment">1</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">alt</span> <span class="hljs-comment">1</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">reset</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">download</span> <span class="hljs-comment">path</span><span class="hljs-literal">-</span><span class="hljs-comment">to</span><span class="hljs-literal">-</span><span class="hljs-comment">repo/simtrace2/firmware/bin/simtrace</span><span class="hljs-literal">-</span><span class="hljs-comment">cardem</span><span class="hljs-literal">-</span><span class="hljs-comment">dfu</span><span class="hljs-string">.</span><span class="hljs-comment">bin</span>
+</code></pre>
+<p>After flashing, it should look like this:</p>
+<pre><code class="lang-bash">./simtrace2-list
+USB matches: <span class="hljs-number">1</span>
+        <span class="hljs-number">1</span>d50:<span class="hljs-number">60</span>e3 <span class="hljs-attr">Addr=22,</span> <span class="hljs-attr">Path=6-1.2.3,</span> <span class="hljs-attr">Cfg=1,</span> <span class="hljs-attr">Intf=0,</span> <span class="hljs-attr">Alt=0:</span> <span class="hljs-number">255</span>/<span class="hljs-number">2</span>/<span class="hljs-number">0</span> (CardEmulator Modem <span class="hljs-number">1</span>)
+</code></pre>
+<h3 id="running-cardem">Running Cardem</h3>
+<p>From the wiki with some extensions:</p>
+<ol>
+<li>power off phone</li>
+<li>insert card adapter cable into phone</li>
+<li>insert card adapter cable SIMtrace v2 board</li>
+<li>plug SIMtrace v2 board in host computer USB port</li>
+<li>connect external card reader to host (any USB CCID reader should do the job)</li>
+<li>ensure a card is present in the reader slot (not in the SIMtrace port)</li>
+<li>check if the card is detected by the reader (use CTRL-C to exit)</li>
+</ol>
+<p>For the next step it&#39;s important to use the correct device information and path:</p>
+<ol>
+<li><code>sudo ./simtrace2-cardem-pcsc -V 1d50 -P 60e3 -C 1 -H &quot;6-1.2.3&quot;</code></li>
+<li>power on phone</li>
+</ol>
+<p>After fixing all the above, I could successfully emulate the commercial SIM :)</p>
+</div>
+
+
+<footer class="page-footer font-small elegant-color-dark pt-4 mt-4">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <h5 class="text-uppercase">Katharina Kohls, Radboud University</h5>
+
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License"
+            style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><span
+          xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Illustrations </span> by <a
+          href="http://kkohls.org" property="cc:attributionName" rel="cc:attributionURL">Katharina Kohls</a> are
+        licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons
+          Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+      </div>
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <div class="col-md-6 mb-md-0 mb-3">
+        <h5 class="text-uppercase"><a href="/privacy.html" onclick="window.open('/privacy.html', '_self');">Privacy & Impressum</a></h5>
+        <p><a href="https://twitter.com/blister_green"><i class="fa fa-twitter fa-2x white-text"></i></a> <a href="mailto:kkohls@cs.ru.nl"><i class="fa fa-envelope fa-2x white-text"></i></a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script>
+$('.navbar-collapse a').click(function () {
+  $(".navbar-collapse").collapse('hide');
+});
+</script>
+<script>
+$(".smooth-scroll").on('click', 'a', function (event) {
+  event.preventDefault();
+  var elAttr = $(this).attr('href');
+  var offset = ($(this).attr('data-offset') ? $(this).attr('data-offset') : 0);
+  var fixedTop = $('.navbar.fixed-top');
+  if (fixedTop && fixedTop.length) {
+    offset = fixedTop.outerHeight();
+  }
+  $('body,html').animate({
+    //scrollTop: $(elAttr).offset().top - offset
+    scrollTop: $(elAttr).offset().top - 56
+  }, 700);
+});
+</script>
+</body>
+
+</html>
