@@ -66,70 +66,73 @@
   
       <br>
 
-      <h1 id="open5gs-setup">Open5GS Setup</h1>
-<p><em>Last updated: 20.07.2021</em>  </p>
-<h2 id="preparation">Preparation</h2>
-<h3 id="general-preparation">General Preparation</h3>
-<h4 id="virtualbox-install">VirtualBox Install</h4>
-<ul>
-<li>Get VirtualBox</li>
-<li>Load a Linux image (this guide is for Ubuntu 20.04)</li>
-<li>Create two VMs using the image</li>
-<li>Go for the minimal install</li>
-</ul>
-<h4 id="network-settings">Network Settings</h4>
-<ul>
-<li>Make sure the machines are stopped</li>
-<li>In the <em>global</em> settings, go the File -&gt; Preferences -&gt; Network and add a new NAT network</li>
-<li>Settings: Enable IPv6, keep all other options, and assign a reasonable name</li>
-<li>For each VM: go to Settings -&gt; Network and select NAT network and the NAT that was just created.</li>
-<li>For <em>one</em> machine make sure to go to the advanced settings and refresh the MAC address, otherwise both machines are the same and get the same IP address</li>
-</ul>
-<p>After the above steps, you are ready to set up both machines individually.</p>
-<h3 id="machine-1-open5gs">Machine 1: Open5Gs</h3>
-<h4 id="installation">Installation</h4>
-<h5 id="requirements">Requirements</h5>
-<p>Update the machine:</p>
+      <p>This guide combines different existing tutorials on <a href="https://open5gs.org/">Open5GS</a> and <a href="https://github.com/aligungr/UERANSIM">UERANSIM</a>. After finishing it, you should be able to run a 5G core network and a simulated SA/NSA 5G access network on two different Ubuntu VMs.</p>
+      <p><em>Last updated: 20.07.2021</em>  </p>
+
+      <h2 id="preparation">Preparation</h2>
+      <h4 id="virtualbox-install">VirtualBox Install</h4>
+      <ul>
+      <li>Get VirtualBox</li>
+      <li>Load a Linux image (this guide is for Ubuntu 20.04)</li>
+      <li>Create two VMs using the image</li>
+      <li>Go for the minimal install</li>
+      </ul>
+      <h4 id="network-settings">Network Settings</h4>
+      <ul>
+      <li>Make sure the machines are stopped</li>
+      <li>In the <em>global</em> settings, go the File -&gt; Preferences -&gt; Network and add a new NAT network</li>
+      <li>Settings: Enable IPv6, keep all other options, and assign a reasonable name</li>
+      <li>For each VM: go to Settings -&gt; Network and select NAT network and the NAT that was just created.</li>
+      <li>For <em>one</em> machine make sure to go to the advanced settings and refresh the MAC address, otherwise both machines are the same and get the same IP address</li>
+      </ul>
+      <p>After the above steps, you are ready to set up both machines individually.</p>
+
+      <h3 id="machine-1-open5gs">Machine 1: Open5Gs</h3>
+      <p>Update the machine:</p>
 <pre><code class="lang-bash"><span class="hljs-attribute">sudo apt update</span>
 </code></pre>
-<p>Install and enable mongodb:</p>
+      <p>Install and enable mongodb:</p>
 <pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> mongodb
 sudo systemctl <span class="hljs-keyword">start</span> mongodb
 sudo systemctl <span class="hljs-keyword">enable</span> mongodb
 </code></pre>
-<p>Install requirements:</p>
+      <p>Install requirements:</p>
 <pre><code class="lang-bash">sudo apt install python3-pip python3-setuptools python3-wheel ninja-build build-essential flex bison git libsctp-<span class="hljs-built_in">dev</span> libgnutls28-<span class="hljs-built_in">dev</span> libgcrypt-<span class="hljs-built_in">dev</span> libssl-<span class="hljs-built_in">dev</span> libidn11-<span class="hljs-built_in">dev</span> libmongoc-<span class="hljs-built_in">dev</span> libbson-<span class="hljs-built_in">dev</span> libyaml-<span class="hljs-built_in">dev</span> libnghttp2-<span class="hljs-built_in">dev</span> libmicrohttpd-<span class="hljs-built_in">dev</span> libcurl4-gnutls-<span class="hljs-built_in">dev</span> libnghttp2-<span class="hljs-built_in">dev</span> libtins-<span class="hljs-built_in">dev</span> meson
 </code></pre>
-<h5 id="build-open5gs-and-test">Build Open5Gs and test</h5>
-<p>We will build Open5Gs from source so we can make changes later on:</p>
+      <h5 id="build-open5gs-and-test">Build Open5Gs and test</h5>
+      <p>We will build Open5Gs from source so we can make changes later on:</p>
 <pre><code class="lang-bash">git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/open5gs/open5gs
 <span class="hljs-keyword">cd</span> open5gs
 meson build --prefix=`<span class="hljs-keyword">pwd</span>`/install
 ninja -C build
 </code></pre>
-<p>Run the tun script right after install:  </p>
-<pre><code class="lang-bash">sudo .<span class="hljs-regexp">/../</span>Desktop<span class="hljs-regexp">/5gs_tun_setup.sh</span>
+
+      <p>Run the <a href="#machine-1-open5gs">tun script</a> right after install (we will prepare this script later on):</p>
+      <pre><code class="lang-bash">sudo .<span class="hljs-regexp">/../</span>Desktop<span class="hljs-regexp">/5gs_tun_setup.sh</span>
 </code></pre>
 <p>To test the compilation, run:  </p>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> build
 meson <span class="hljs-built_in">test</span> -v
 </code></pre>
-<p>When all tests succeeded, you can proceed with the install step:  </p>
+      <p>When all tests succeeded, you can proceed with the install step:  </p>
 <pre><code class="lang-bash">ninja <span class="hljs-keyword">install</span>
 </code></pre>
-<h5 id="setup-of-the-webui">Setup of the WebUI</h5>
+
+      <h5 id="setup-of-the-webui">Setup of the WebUI</h5>
+      <p>The WebUI allows us to register new users. We need to set it up once, later on we can simply start it from the correct folder.</p>
+
 <pre><code class="lang-bash">sudo apt install curl
 curl -fsSL http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/setup_14.<span class="hljs-keyword">x</span> | sudo -E bash -
 sudo apt install nodejs
 <span class="hljs-keyword">cd</span> open5gs/webui/
 npm ci --<span class="hljs-keyword">no</span>-optional
 </code></pre>
+
 <p>Run the WebUI via</p>
 <pre><code class="lang-bash">npm <span class="hljs-keyword">run</span><span class="bash"> dev</span>
 </code></pre>
 <p>You have now finished the build procedure. We will continue with setting up the <em>second</em> VM and UERANSIM.</p>
 <h3 id="machine-2-ueransim">Machine 2: UERANSIM</h3>
-<h4 id="requirements">Requirements</h4>
 <p>Install the requirements:</p>
 <pre><code class="lang-bash"><span class="hljs-comment">sudo</span> <span class="hljs-comment">apt</span> <span class="hljs-comment">install</span> <span class="hljs-comment">git</span> <span class="hljs-comment">make</span> <span class="hljs-comment">gcc</span> <span class="hljs-comment">g</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-comment">libsctp</span><span class="hljs-literal">-</span><span class="hljs-comment">dev</span> <span class="hljs-comment">lksctp</span><span class="hljs-literal">-</span><span class="hljs-comment">tools</span> <span class="hljs-comment">iproute2</span>
 </code></pre>
@@ -211,8 +214,7 @@ imsi</span>: 901700000000001
 <p>This might be fixed with port forwarding in the global NAT configuration.</p>
 <h2 id="startup">Startup</h2>
 <h3 id="machine-1-open5gs">Machine 1: Open5Gs</h3>
-<h4 id="prepare-the-tun-device">Prepare the TUN device</h4>
-<p><strong>Needs to be done after each reboot</strong>
+<p><strong>Needs to be done after each reboot:</strong>
 Put the following commands in a bash script, for example 5gs_tun_setup.sh on Desktop:</p>
 <pre><code class="lang-bash"><span class="hljs-built_in">ip</span> tuntap <span class="hljs-keyword">add</span> name ogstun mode tun
 <span class="hljs-built_in">ip</span> addr <span class="hljs-keyword">add</span> <span class="hljs-number">10.45</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>/<span class="hljs-number">16</span> dev ogstun
@@ -237,8 +239,10 @@ Put the following commands in a bash script, for example 5gs_tun_setup.sh on Des
 </ul>
 <h4 id="run-the-open5gs-core-all-of-it-">Run the Open5GS Core (all of it)</h4>
 <p>cd /home/lab/open5gs/build/tests/app/ &amp;&amp; ./5gc</p>
+
+
 <h3 id="machine-2-ueransim">Machine 2: UERANSIM</h3>
-<h4 id="run-the-ueransim-gnb-and-ue">Run the UERANSIM gNB and UE</h4>
+<!-- <h4 id="run-the-ueransim-gnb-and-ue">Run the UERANSIM gNB and UE</h4> -->
 <pre><code class="lang-bash">cd <span class="hljs-regexp">/home/</span>lab<span class="hljs-regexp">/UERANSIM/</span>build
 </code></pre>
 <p>In a first terminal, start the gNB:</p>
@@ -251,8 +255,8 @@ Put the following commands in a bash script, for example 5gs_tun_setup.sh on Des
 <pre><code class="lang-bash">nr-ue -c myconfig<span class="hljs-selector-class">.yaml</span> -n <span class="hljs-number">10</span>
 </code></pre>
 <p>Please note: All of the users need to be registered, the IMSIs for new users are simply incremented starting from the initial IMSI noted in the configuration.</p>
-<h2 id="doing-things">Doing Things</h2>
-<h3 id="controlling-the-ue-and-gnb">Controlling the UE and gNB</h3>
+
+<h2 id="controlling-the-ue-and-gnb">Controlling the UE and gNB</h2>
 <p>Start the CLI for the UE using the identity of a component. Existing nodes can be displayed via</p>
 <pre><code class="lang-bash">./nr-cli --dump
 UERANSIM-gnb<span class="hljs-number">-901</span><span class="hljs-number">-70</span><span class="hljs-number">-1</span>
@@ -291,7 +295,8 @@ ue-<span class="hljs-keyword">count</span>   | Print the total <span class="hljs
 ue-<span class="hljs-keyword">release</span> | Request a UE <span class="hljs-keyword">context</span> <span class="hljs-keyword">release</span> <span class="hljs-keyword">for</span> the given UE
 <span class="hljs-comment">--------------------------------------------------------------------------------------------</span>
 </code></pre>
-<h3 id="internet-connection">Internet Connection</h3>
+
+<h2 id="internet-connection">Internet Connection</h2>
 <p><code>uesimtun0</code> is the default network interface that gets created automatically with running UERANSIM.</p>
 <p>You can find the PDU Session IP and TUN address in the UE logs:  </p>
 <pre><code class="lang-bash"><span class="hljs-comment">[2021-07-20 11:44:41.591]</span> <span class="hljs-comment">[app]</span> <span class="hljs-comment">[info]</span> Connection setup for PDU session<span class="hljs-comment">[1]</span> <span class="hljs-keyword">is</span> successful, TUN interface<span class="hljs-comment">[uesimtun0, 10.45.0.3]</span> <span class="hljs-keyword">is</span> up.
@@ -305,7 +310,8 @@ PING google.com (<span class="hljs-number">142.250</span><span class="hljs-meta"
 <span class="hljs-number">64</span> bytes from lhr25s34-<span class="hljs-keyword">in</span>-f14<span class="hljs-meta">.1e100</span>.net (<span class="hljs-number">142.250</span><span class="hljs-meta">.187</span><span class="hljs-meta">.238</span>): icmp_seq=<span class="hljs-number">4</span> ttl=<span class="hljs-number">112</span> time=<span class="hljs-number">11.8</span> ms
 </code></pre>
 <p>The tool is a bit buggy though, I could only run it with ping but not with curl.</p>
-<h3 id="monitoring-network-interfaces">Monitoring Network Interfaces</h3>
+
+<h2 id="monitoring-network-interfaces">Monitoring Network Interfaces</h2>
 <p>The default interfaces for Open5GS look as follows:  </p>
 <ul>
 <li>MongoDB   = 127.0.0.1 (subscriber data) - <a href="http://localhost:3000">http://localhost:3000</a></li>
@@ -335,31 +341,30 @@ PING google.com (<span class="hljs-number">142.250</span><span class="hljs-meta"
 <li>BSF-sbi   = 127.0.0.15:7777 for 5G SBI</li>
 <li>UDR-sbi   = 127.0.0.20:7777 for 5G SBI</li>
 </ul>
-<h2 id="capturing-helpers">Capturing Helpers</h2>
+<!-- <h2 id="capturing-helpers">Capturing Helpers</h2>
 <ul>
 <li>run wireshark as root</li>
 <li>to avoid the subscriber traffic (!(ip.src == 127.0.0.1)) &amp;&amp; !(ip.dst == 127.0.0.1)</li>
 <li>not sure about the IPv6 stuff, but to get that out as well append &amp;&amp; !(ipv6.src == ::1)</li>
 <li>please note that filters might depend on your specific network setup</li>
-</ul>
+</ul> -->
 <h2 id="sources">Sources</h2>
 <ul>
 <li><a href="https://github.com/aligungr/UERANSIM/wiki/Configuration">UERANSIM Configuration</a></li>
 <li><a href="https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/">Build Open5GS</a></li>
 </ul>
 <h2 id="troubleshooting">Troubleshooting</h2>
-<ul>
-<li>Make sure you prepared the TUN</li>
-</ul>
-<h3 id="problems-with-libogscrypt">Problems with libogscrypt</h3>
-<p>Problem:  </p>
+
+<!-- <h4 id="problems-with-libogscrypt">Problems with libogscrypt</h4> -->
+<p>Problems with libogscrypt:  </p>
 <pre><code class="lang-bash"><span class="hljs-comment">"error while loading shared libraries: libogscrypt.so.2: cannot open shared object file: No such file or directory"</span>
 </code></pre>
 <p>Solution:  </p>
 <pre><code class="lang-bash">sudo <span class="hljs-keyword">sh </span>-c <span class="hljs-string">"echo /home/lab/open5gs/install/lib/x86_64-linux-gnu/ &gt; /etc/ld.so.conf.d/open5gs.conf"</span>
 </code></pre>
-<p><a href="https://open5gs.org/open5gs/docs/troubleshoot/02-now-in-github-issues/">Source</a></p>
-<p>Problem:</p>
+<!-- <p>Found <a href="https://open5gs.org/open5gs/docs/troubleshoot/02-now-in-github-issues/">here</a></p> -->
+
+<p>Problems with address already in use:</p>
 <pre><code class="lang-bash"><span class="hljs-number">07</span>/<span class="hljs-number">20</span> <span class="hljs-number">10</span>:<span class="hljs-number">31</span>:<span class="hljs-number">35.458</span>: [sock] <span class="hljs-symbol">ERROR:</span> socket bind(<span class="hljs-number">2</span>) [<span class="hljs-number">127.0</span>.<span class="hljs-number">0.10</span>]:<span class="hljs-number">7777</span> failed (<span class="hljs-number">98</span>:Address already in use) (../<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">core</span>/<span class="hljs-title">ogs</span>-<span class="hljs-title">socket</span>.<span class="hljs-title">c</span>:109)</span>
 </code></pre>
 <p>Check for the process that uses the address/port</p>
@@ -373,13 +378,11 @@ tcp6      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 <
 <p>Then kill the process and start again:  </p>
 <pre><code class="lang-bash">sudo kill <span class="hljs-number">-9</span> <span class="hljs-number">12991</span>
 </code></pre>
-<h3 id="authentication-issues-in-ueransim">Authentication issues in UERANSIM</h3>
-<p>Problem:  </p>
+<!-- <h3 id="authentication-issues-in-ueransim">Authentication issues in UERANSIM</h3> -->
+<p>Problems with a failing UE authentication:</p>
 <pre><code class="lang-bash"><span class="hljs-selector-attr">[2021-07-16 16:07:38.192]</span> <span class="hljs-selector-attr">[nas]</span> <span class="hljs-selector-attr">[error]</span> <span class="hljs-attribute">Initial</span> Registration failed <span class="hljs-selector-attr">[FIVEG_SERVICES_NOT_ALLOWED]</span>
 </code></pre>
-<p>Make sure that the UE credentials entered in the admin interface are correct. The error means that the authentication with the core failed.</p>
-
-
+<p>Solution: Make sure that the UE credentials entered in the admin interface are correct. The error means that the authentication with the core failed.</p>
 
 
 
