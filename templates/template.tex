@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+ \usepackage{graphicx}
+ \usepackage{titling}
+ \setlength\parindent{0pt}
+ \title{Thesis proposal\\
+ \large Name of your thesis}
+\author{Your name}
+\date{\today}
+
+\usepackage{lipsum}  
+\usepackage{cmbright}
+
+\begin{document}
+
+\maketitle
+
+\section*{Supervision}
+\begin{tabular}{ l l }
+	First supervisor: & Prof. Dr. Katharina Kohls \\ 
+	Second supervisor: & -  \\  
+\end{tabular}
+
+\section*{Motivation}
+The motivation section should explain \textbf{why} the topic is relevant, timely, and interesting. This is where you convince the reader of the importance of your research.
+
+\textbf{Questions to address:}
+\begin{itemize}[label=--]
+	\item What problem or challenge does your topic address?
+  	\item What is the real-world context of your problem?
+	\item Why is this problem worth investigating?
+	\item What are the practical or theoretical benefits of solving it?
+	\item Is there a gap in existing research or practice?
+\end{itemize}
+
+The motivation serves as an introduction to your proposal. It should already contain a few references to important related work and provide a full argumentation towards the relevance of the project.
+
+\section*{Related Work}
+In this section, provide a short literature review of key work related to your topic. Show that you are aware of the research landscape and identify how your work will contribute.
+
+\textbf{Questions to address:}
+\begin{itemize}[label=--]
+  \item What are the most relevant papers, systems, or approaches?
+  \item What have others already done in this area?
+  \item How does your work differ or extend prior work?
+  \item Are there any shortcomings or gaps in the existing literature?
+\end{itemize}
+
+For every reference or group of references provide a connection to tour own work. Discuss what they have in common and how they differ from the intended approach in your thesis. After these smaller discussions, also prvoide a short paragraph that concludes the overview of the current state of the art and once more explains the relevanve of your thesis, now from the perspective of literature.
+
+\section*{Research Question}
+This is the core of your proposal. Clearly state your main research question and break it down into smaller, manageable sub-questions. Your whole thesis should aim to answer these questions.
+
+\textbf{Questions to address:}
+\begin{itemize}[label=--]
+  \item What is your main research question?
+  \item Is it specific, clear, and researchable?
+  \item What sub-questions need to be answered to address the main question?
+  \item How do these sub-questions relate to one another?
+\end{itemize}
+
+Make sure to justify and explain your research questions. At this point your already have the motivation and related work as backup. The research question should be a logical consequence of everything you discussed before. The sub questions help to structure your thesis.
+
+\section*{Timeline}
+Outline a rough timeline that shows how you plan to approach and complete your thesis. This helps both you and your advisor manage expectations and track progress.
+
+\textbf{Questions to address:}
+\begin{itemize}[label=--]
+  \item What are the major milestones (e.g., literature review, prototyping, data collection, writing)?
+  \item When do you plan to complete each of these steps?
+  \item Are there any dependencies or risks you need to consider?
+  \item How will you ensure you stay on track?
+\end{itemize}
+
+\vspace{1em}
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!50!black, title=Tip]
+Be realistic with your goals and timeline. It's better to promise less and deliver more than the opposite.
+\end{tcolorbox}
+
+\bibliographystyle{abbrv}
+\bibliography{template}
+
+
+\end{document}
