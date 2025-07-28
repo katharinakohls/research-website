@@ -1,0 +1,66 @@
+<h4 id="theses">Baseband Security</h4>
+<ul>
+    <li><strong>Automated State Machine Extraction from Emulated Basebands</strong>, MASTER Thesis<br>In a mobile
+    network, state machines are crucial to define the interaction within different protocols. They help to create
+    systems that can interact with each other despite being implemented by different vendors. However, the
+    individual implementations can differ from the official specification, which results in potential differences in
+    devices that can cause security issues. In this thesis, we focus on the baseband of mobile devices, e.g., the
+    component that implements the mobile-specific functions in an end device like a smartphone. You make use of the
+    FirmWire to analyze sequences of NAS and RRC messages. To this end, you implement a tool that can track
+    transitions and, eventually, derive a state machine from the emulated firmware.</li>
+
+    <li><strong>Automatic Function Name Inference for Large-Scale Binaries</strong>, BACHELOR/MASTER Thesis<br>
+    In security analysis and open-source driver development, source code is often unavailable, and debug symbols are
+    often missing. Finding good function names in such cases helps with reverse engineering those binaries, but
+    doing this manually can be a daunting task. While debug symbols may be absent, log functions (e.g., printf in
+    ELF binaries, UART printing functions for monolithic binaries, ...) can give an idea of what a function name
+    could be. Large Language Models (LLMs) could assist in this process as well. The thesis should aim to improve
+    firmware analysis for both ELF binaries (easy), and for monolithic firmware.
+    <br>
+    In this project, the student will implement a program to automatically infer function names in (large-scale)
+    stripped binaries, improving the efficiency of reverse engineering and firmware analysis. The program can use
+    log functions (such as printf in ELF binaries and UART-based logging in monolithic firmware) as hints for
+    function identification. Additionally, Large Language Models (LLMs) and heuristic-based techniques can be
+    explored to improve function name inference. The project also includes creating a ground truth dataset,
+    implementing the method in a reverse engineering framework as a plugin (e.g., Ghidra or Binary Ninja), and
+    evaluating the effectiveness of the approach. The student must also come up with good metrics for testing
+    effectiveness. If time permits, the work can be extended to infer variable names or analyze baseband firmware.
+    </li>
+
+    <li><strong>Passive Baseband Vendor Fingerprinting through Protocol Differences</strong>, MASTER Thesis<br>This research explores the feasibility of passive baseband fingerprinting techniques by analyzing cellular network traffic of different mobile phone vendors and baseband processors.  This can be done by identifying and analyzing small variations in the way different baseband firmware from different vendors and hardware implement and process cellular protocols.  This research could create interesting questions about intrusion detection (based on anomalies in baseband behavior) on the one hand and privacy/tracking related questions on the other hand.
+    <br>
+    In this project, the student will analyze passive baseband fingerprinting techniques by examining variations in cellular network traffic across different mobile device vendors and baseband processors. The focus will be on identifying differences in protocol orhardware processing characteristics in vendor specific baseband implementations. The project involves setting up controlled experiments with selected devices, extracting relevant metadata (called features) from the traffic, and developing a methodology for a larger scale analysis. The student will generate a dataset, train a classification model, and evaluate its accuracy in distinguishing basebands. If time permits, the project can be extended to explore intrusion detection applications or privacy risks/attacks related to baseband fingerprinting.
+    </li>
+</ul>
+
+<li>
+    <strong>Survey of Adversarial Models for Traffic Analysis in Quantum Networks</strong>, BACHELOR Thesis<br>
+    Quantum communication introduces new adversarial capabilities, but most existing traffic analysis models are
+    rooted in classical assumptions.<br>
+    This thesis will survey the literature on quantum-enabled adversaries, classify their capabilities (e.g.,
+    passive, active, entanglement-based), and produce a taxonomy of attack models suitable for traffic analysis
+    research in quantum-augmented settings.
+</li>
+
+<li><strong>Formal Modeling of Timing Leakage in Quantum-Classical Hybrid Systems</strong>, MASTER Thesis<br>
+    In hybrid communication systems, classical timing channels may be affected or limited by quantum uncertainty.
+    Understanding these interactions is crucial for designing leakage-resistant protocols.<br>
+    The thesis involves developing a formal model of timing leakage that incorporates quantum timing imprecision,
+    creating visual simulations, and comparing leakage properties against classical models.
+</li>
+
+<li><strong>Information-Theoretic Bounds on Flow Correlation in Noisy Quantum Channels</strong>, MASTER Thesis<br>
+    Quantum-enhanced protocols may introduce uncertainty that reduces flow correlation, but how much protection this
+    provides is still unknown.<br>
+    The thesis will model adversarial inference in noisy quantum-like channels, derive upper bounds on remaining
+    correlation, and validate results via simulation or analytical estimation.
+</li>
+
+
+    <!-- <li><strong>Measuring Mobile Network Infrastructure</strong>, Bachelor Thesis<br> Mobile networks consist of radio towers that provide wireless connectivity, and core networks that are the backbone of the infrastructure. Depending on the commercial operator, the distribution of both radio towers and core networks varies. This not only influences the service that users receive, but can also affect the security and privacy capabilities of the connection. In this thesis, you implement a measurement framework that probes the infrastructures of existing mobile networks. Based on the results of the measurement study, you summarize the results and discuss their implications for the users of the networks.</li> -->
+
+
+
+    <!-- <li><strong>End-to-End Traffic Analysis Attacks in Mobile Networks</strong>, Bachelor Thesis<br>Design and apply end-to-end traffic analysis attacks on 5G mobile traffic. The thesis focuses on the experimental evaluation of statistical attacks and their feasibility.</li> -->
+
+    <!-- <li><strong>Remote SIM Implementation</strong>, Master Thesis<br>Integrate a <a href="https://osmocom.org/projects/osmo-remsim/wiki">remote SIM</a> setup into <a href="https://www.srslte.com/">SRSRAN</a> that allows to switch between multiple physical SIM cards within the software stack implementation of SRSRAN. Verify the correct behavior and conduct measurements in this setup.</li> -->
