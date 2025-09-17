@@ -88,6 +88,7 @@
           Industrial facilities use 5G campus networks to control their production units and exchange information. Compared to WiFi setups, such 5G campus networks benefit from the security and performance capabilities of the latest mobile generation. However, we know a series of attacks that enable an adversary to interfere with components in a 5G network setup, and campus networks are not necessarily excluded from this threat.
           In this thesis, you build a demonstrator setup that involves a robotic arm and a 5G network component. To this end, you will 3D-print a suitable model, assemble it, and connect it to a 5G lab network under your control. After the assembly, you will setup a toy example that allows you to control the robotic arm through the 5G cellular connection. In the final setup, you conduct a security analysis of the setup and reflect on the individual requirements in an industrial 5G campus network.
         </li>
+        <!-- https://github.com/PCrnjak/PAROL6-Desktop-robot-arm?tab=readme-ov-file -->
     </ul>
 
     <h4 id="theses">Mobile Communication</h4>
@@ -111,6 +112,56 @@
         influences the security and privacy of connections and how it opens up attack vectors.</li>
     </ul>
 
+    <h4 id="theses">AI-Driven Security Enhancements in 6G Network Architectures</h4>
+    <ul>
+
+      <li><strong>AI-based Network Planning for Secure 6G Campus Networks</strong>, MASTER Thesis<br>
+    <em>Context & Motivation:</em> Network planning strongly impacts both performance and security of mobile networks. Poor placement of base stations may enable attacks such as IMSI-Catchers or rogue base stations. AI-based optimization can help design topologies that minimize risks while maintaining performance.<br>
+    <em>Scientific Relevance:</em> Integrating security considerations directly into network planning is novel in 6G research. Existing approaches rarely combine topology optimization with security metrics.<br>
+    <em>Candidate Tasks:</em> Conduct literature study on network planning and security metrics; build a simulation model of campus networks; design and train an ML algorithm for secure cell placement; evaluate the approach against realistic attack and usage scenarios.<br>
+    <em>Tools / Skills:</em> ns-3, Python (TensorFlow/PyTorch), cellular networks knowledge (5G/6G), machine learning
+  </li>
+
+  <li><strong>Deep Learning for Anomaly Detection in the 6G Core</strong>, MASTER Thesis<br>
+    <em>Context & Motivation:</em> The 6G core network is a critical target for attacks such as denial-of-service or rogue functions. Classical intrusion detection systems struggle with scalability. Deep learning-based anomaly detection promises more robust protection.<br>
+    <em>Scientific Relevance:</em> While anomaly detection is well-studied, its application to 6G core functions is largely unexplored.<br>
+    <em>Candidate Tasks:</em> Analyze 6G core functions and attack vectors; collect or generate relevant network traffic data; implement and train DL-based anomaly detection models (Autoencoder, RNN, CNN); benchmark performance against classical IDS methods.<br>
+    <em>Tools / Skills:</em> Python, TensorFlow/Keras, Mininet/Open5GS, network security
+  </li>
+
+  <li><strong>Simulation and Analysis of Attack Scenarios in 6G Network Structures</strong>, MASTER Thesis<br>
+    <em>Context & Motivation:</em> 6G networks will be highly complex, making realistic attack simulations (IMSI-Catcher, rogue base stations, traffic injection) essential for evaluating countermeasures.<br>
+    <em>Scientific Relevance:</em> Systematic simulation of such scenarios provides valuable data for AI-driven defense mechanisms.<br>
+    <em>Candidate Tasks:</em> Model different 6G attack vectors; implement scenarios in a simulator or testbed; analyze the impact on confidentiality, integrity, and availability; prepare datasets for ML-based defense methods.<br>
+    <em>Tools / Skills:</em> ns-3, OpenAirInterface, USRP (SDR), cellular security basics
+  </li>
+
+  <!-- <li><strong>Adaptive Network Configuration via Reinforcement Learning</strong>, MASTER Thesis<br>
+    <em>Context & Motivation:</em> Static network configurations are insufficient against evolving threats. Reinforcement Learning (RL) can dynamically adapt parameters to improve resilience.<br>
+    <em>Scientific Relevance:</em> RL is a young but promising research approach to network security, especially relevant for adaptive 6G infrastructures.<br>
+    <em>Tools / Skills:</em> Python (Stable Baselines, Gym), ns-3 or simulation, reinforcement learning
+  </li> -->
+
+  <!-- <li><strong>Explainable AI (XAI) for Security-Critical Network Decisions</strong>, MASTER Thesis<br>
+    <em>Context & Motivation:</em> AI models are often black boxes. In security-critical network decisions, operators must understand the reasoning behind AI actions. XAI provides transparency and trust.<br>
+    <em>Scientific Relevance:</em> Explainable AI is growing rapidly but has rarely been applied to mobile network security and planning.<br>
+    <em>Tools / Skills:</em> Python, Scikit-learn, SHAP/LIME, ML and network security basics
+  </li> -->
+
+  <!-- <li><strong>Standardization Perspectives of AI-based Network Security Methods</strong>, MASTER Thesis<br>
+    <em>Context & Motivation:</em> Results from IGEL-AI could influence standardization bodies like 3GPP, ETSI, or O-RAN. Evaluating compatibility and integration potential is crucial.<br>
+    <em>Scientific Relevance:</em> Standardization is the key to turning novel AI-based methods into adopted technologies in future mobile networks.<br>
+    <em>Tools / Skills:</em> Literature/document analysis, telecom standards knowledge, optional text-mining tools
+  </li> -->
+
+  <li><strong>Centralized vs. Decentralized AI Approaches for Network Security</strong>, MASTER Thesis<br>
+    <em>Context & Motivation:</em> Deciding whether AI for network security runs centrally (cloud) or decentrally (edge) affects performance, latency, and resilience.<br>
+    <em>Scientific Relevance:</em> The trade-off between cloud-based and edge AI is a hot research topic in 6G and has direct implications for secure infrastructures.<br>
+    <em>Candidate Tasks:</em> Compare centralized vs. decentralized AI security models; build proof-of-concepts (edge training vs. cloud training); evaluate performance, latency, and energy efficiency; derive architectural recommendations.<br>
+    <em>Tools / Skills:</em> TensorFlow Lite, Docker/Kubernetes, edge computing basics, distributed systems
+  </li>
+    </ul>
+
     <h4 id="theses">Quantum-Based Untraceable Communication</h4>
     <ul>
 
@@ -128,12 +179,12 @@
         diagrams, and adversarial trace reconstructions based on simulation output files.
       </li>
 
-      <li><strong>Extending Mixing Protocols with Quantum-Inspired Randomness Models</strong>, MASTER Thesis<br>
+      <!-- <li><strong>Extending Mixing Protocols with Quantum-Inspired Randomness Models</strong>, MASTER Thesis<br>
         Quantum processes can produce randomness distributions that differ from classical pseudorandom generators. These
         may help design harder-to-predict mixing strategies.<br>
         This thesis will extend existing mixnet-like protocols by integrating non-classical randomness models and
         analyze their effects on metadata leakage and traffic flow patterns.
-      </li>
+      </li> -->
 
       <li><strong>Integration of Adversarial Correlation Attacks into Simulation Testbed</strong>, MASTER Thesis<br>
         To evaluate metadata leakage, simulation environments must include realistic adversarial models capable of
