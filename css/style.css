@@ -26,3 +26,7 @@ footer.page-footer h2 {
     font-weight: 300;
     text-transform: uppercase;
 }
+
+img.portrait {
+    width: 80%;
+}
