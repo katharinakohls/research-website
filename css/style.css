@@ -11,6 +11,11 @@
   }
 }
 
+header .banner {
+  margin-top: 1.5em;
+  background: linear-gradient(to right, #320d69, #30c8cc);
+}
+
 h1 {
     font-weight: inherit;
 }
