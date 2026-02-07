@@ -1,96 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <title>Katharina Kohls</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-      
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/mdb.min.css" rel="stylesheet">
-        <link href="css/style.min.css" rel="stylesheet">
-      </head>
+<head>
+  <title>Katharina Kohls – Open5GS Virtual Setup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Meta -->
+  <meta name="description" content="Guide: How to set up a virtual 5G network with Open5GS and UERANSIM">
+  <meta name="keywords" content="about, publications, service, teaching">
+  <meta name="author" content="Katharina Kohls">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@blister_green">
+  <meta name="twitter:title" content="Personal website of Katharina Kohls.">
+  <meta name="twitter:description" content="Professor; (Mobile) Network Security.">
+  <meta name="twitter:image" content="https://kkohls.org/images/kk_tw.jpg">
+  <!-- Facebook Card -->
+  <meta property="og:url" content="https://kkohls.org">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Personal website of Katharina Kohls.">
+  <meta property="og:description" content="Guide: How to set up a virtual 5G network with Open5GS and UERANSIM">
+  <meta property="og:image" content="https://kkohls.org/images/kk_tw.jpg">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="css/style.min.css" rel="stylesheet">
+</head>
 
 <body>
-    <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-          <div class="smooth-scroll">
-            <a class="navbar-brand smooth-scroll" href="index.html" onclick="window.open('/index.html', '_self');">Home</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mr-auto smooth-scroll">
-              <!-- Left -->
-              <!-- <ul class="navbar-nav mr-auto smooth-scroll"> -->
-                <li class="nav-item">
-                  <a class="nav-link" href="/publications.html" onclick="window.open('/publications.html', '_self');">Publications</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/academic_service.html" onclick="window.open('/academic_service.html', '_self');">Academic Service</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/teaching.html" onclick="window.open('/teaching.html', '_self');">Teaching</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/projects.html" onclick="window.open('/projects.html', '_self');">Projects</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="/guides.html" onclick="window.open('/guides.html', '_self');">Guides</a>
-                </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="smooth-scroll">
+        <a class="navbar-brand smooth-scroll" href="/">Home</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto smooth-scroll">
+          <li class="nav-item">
+            <a class="nav-link" href="/publications">Publications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/academic_service">Academic Service</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teaching">Teaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/guides">Guides</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <br>
-
-      <div class="card card-image" style="background-image: url(images/banner1.png);">
-        <!-- <div class="text-black text-center rgba-white-strong py-5 px-4"> -->
-          <div class="text-white text-center">
-      <div class="py-5">
-        <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Katharina Kohls</strong></h2>
-        <h3 class="mb-4 pb-2 px-md-5 mx-md-5">Head of System Security Chair<br>Ruhr University Bochum</h3>
+    <div class="banner card card-image">
+      <div class="text-white text-center">
+        <div class="py-5">
+          <h1 class="h1-responsive pt-3 mb-5">Katharina Kohls</h1>
+          <div class="subheading mb-4 pb-2 px-md-5 mx-md-5">Head of System Security Chair<br>Ruhr University Bochum</div>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
 
-    <br>
-
+  <main>
     <div class="container" id="intro">
-      <h1 class="display-4">Open5GS Virtual Setup</h1>
-      <hr>
-  
-      <br>
+  <h1 class="display-4">Open5GS Virtual Setup</h1>
+  <hr>
 
-      <p>This guide combines different existing tutorials on <a href="https://open5gs.org/">Open5GS</a> and <a href="https://github.com/aligungr/UERANSIM">UERANSIM</a>. After finishing it, you should be able to run a 5G core network and a simulated SA/NSA 5G access network on two different Ubuntu VMs.</p>
+  <br>
 
-      <p>Want to skip all this? You can download both VMs <a href="https://ftp.science.ru.nl/cs/kkohls/2021_open5gs_vms/">here</a>. The user is <code>fiveg</code>, the pw is <code>5g</code>.</p>
-      <p><em>Last updated: 20.07.2021</em>  </p>
+  <p>This guide combines different existing tutorials on <a href="https://open5gs.org/">Open5GS</a> and <a href="https://github.com/aligungr/UERANSIM">UERANSIM</a>. After finishing it, you should be able to run a 5G core network and a simulated SA/NSA 5G access network on two different Ubuntu VMs.</p>
 
-      <h2 id="preparation">Preparation</h2>
-      <h4 id="virtualbox-install">VirtualBox Install</h4>
-      <ul>
-      <li>Get VirtualBox</li>
-      <li>Load a Linux image (this guide is for Ubuntu 20.04)</li>
-      <li>Create two VMs using the image</li>
-      <li>Go for the minimal install</li>
-      </ul>
-      <h4 id="network-settings">Network Settings</h4>
-      <ul>
-      <li>Make sure the machines are stopped</li>
-      <li>In the <em>global</em> settings, go the File -&gt; Preferences -&gt; Network and add a new NAT network</li>
-      <li>Settings: Enable IPv6, keep all other options, and assign a reasonable name</li>
-      <li>For each VM: go to Settings -&gt; Network and select NAT network and the NAT that was just created.</li>
-      <li>For <em>one</em> machine make sure to go to the advanced settings and refresh the MAC address, otherwise both machines are the same and get the same IP address</li>
-      </ul>
-      <p>After the above steps, you are ready to set up both machines individually.</p>
+  <p>Want to skip all this? You can download both VMs <a href="https://ftp.science.ru.nl/cs/kkohls/2021_open5gs_vms/">here</a>. The user is <code>fiveg</code>, the pw is <code>5g</code>.</p>
+  <p><em>Last updated: 20.07.2021</em>  </p>
 
-      <h3 id="machine-1-open5gs">Machine 1: Open5Gs</h3>
-      <p>Update the machine:</p>
+  <h2 id="preparation">Preparation</h2>
+  <h4 id="virtualbox-install">VirtualBox Install</h4>
+  <ul>
+  <li>Get VirtualBox</li>
+  <li>Load a Linux image (this guide is for Ubuntu 20.04)</li>
+  <li>Create two VMs using the image</li>
+  <li>Go for the minimal install</li>
+  </ul>
+  <h4 id="network-settings">Network Settings</h4>
+  <ul>
+  <li>Make sure the machines are stopped</li>
+  <li>In the <em>global</em> settings, go the File -&gt; Preferences -&gt; Network and add a new NAT network</li>
+  <li>Settings: Enable IPv6, keep all other options, and assign a reasonable name</li>
+  <li>For each VM: go to Settings -&gt; Network and select NAT network and the NAT that was just created.</li>
+  <li>For <em>one</em> machine make sure to go to the advanced settings and refresh the MAC address, otherwise both machines are the same and get the same IP address</li>
+  </ul>
+  <p>After the above steps, you are ready to set up both machines individually.</p>
+
+  <h3>Machine 1: Open5Gs</h3>
+  <p>Update the machine:</p>
 <pre><code class="lang-bash"><span class="hljs-attribute">sudo apt update</span>
 </code></pre>
       <p>Install and enable mongodb:</p>
@@ -134,7 +145,7 @@ npm ci --<span class="hljs-keyword">no</span>-optional
 <pre><code class="lang-bash">npm <span class="hljs-keyword">run</span><span class="bash"> dev</span>
 </code></pre>
 <p>You have now finished the build procedure. We will continue with setting up the <em>second</em> VM and UERANSIM.</p>
-<h3 id="machine-2-ueransim">Machine 2: UERANSIM</h3>
+<h3>Machine 2: UERANSIM</h3>
 <p>Install the requirements:</p>
 <pre><code class="lang-bash"><span class="hljs-comment">sudo</span> <span class="hljs-comment">apt</span> <span class="hljs-comment">install</span> <span class="hljs-comment">git</span> <span class="hljs-comment">make</span> <span class="hljs-comment">gcc</span> <span class="hljs-comment">g</span><span class="hljs-literal">+</span><span class="hljs-literal">+</span> <span class="hljs-comment">libsctp</span><span class="hljs-literal">-</span><span class="hljs-comment">dev</span> <span class="hljs-comment">lksctp</span><span class="hljs-literal">-</span><span class="hljs-comment">tools</span> <span class="hljs-comment">iproute2</span>
 </code></pre>
@@ -150,7 +161,7 @@ git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-ke
 <span class="hljs-keyword">make</span>
 </code></pre>
 <h3 id="network-configuration">Network Configuration</h3>
-<h4 id="machine-1-open5gs">Machine 1: Open5Gs</h4>
+<h4>Machine 1: Open5Gs</h4>
 <p>Get the IP address of the Open5Gs machine, for example using net-tools:  </p>
 <pre><code class="lang-bash">sudo apt <span class="hljs-keyword">install</span> net-tools
 ifconfig
@@ -172,7 +183,7 @@ ifconfig
       <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">addr</span>: 10<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.2</span><span class="hljs-selector-class">.4</span>
 </code></pre>
 <p>Put in the address we found via ifconfig</p>
-<h4 id="machine-2-ueransim">Machine 2: UERANSIM</h4>
+<h4>Machine 2: UERANSIM</h4>
 <p>Go to the config directory and create a copy of the configs:  </p>
 <pre><code class="lang-bash">cd /home/fiveg/UERANSIM/config
 cp open5gs-gnb<span class="hljs-selector-class">.yaml</span> virtualbox_open5gs-gnb<span class="hljs-selector-class">.yaml</span>
@@ -243,7 +254,7 @@ Put the following commands in a bash script, for example 5gs_tun_setup.sh on Des
 <p>cd /home/lab/open5gs/build/tests/app/ &amp;&amp; ./5gc</p>
 
 
-<h3 id="machine-2-ueransim">Machine 2: UERANSIM</h3>
+<h3>Machine 2: UERANSIM</h3>
 <!-- <h4 id="run-the-ueransim-gnb-and-ue">Run the UERANSIM gNB and UE</h4> -->
 <pre><code class="lang-bash">cd <span class="hljs-regexp">/home/</span>lab<span class="hljs-regexp">/UERANSIM/</span>build
 </code></pre>
@@ -374,7 +385,7 @@ PING google.com (<span class="hljs-number">142.250</span><span class="hljs-meta"
 </code></pre>
 <p>Example:  </p>
 <pre><code class="lang-bash">fiveg@fiveg-VirtualBox:~/open5gs$ sudo netstat -nlp | grep 7777
-tcp       <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>127.0.0.10:7777         0.0.0.0:*               LISTEN      12991/open5gs-nrfd  
+tcp       <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>127.0.0.10:7777         0.0.0.0:*               LISTEN      12991/open5gs-nrfd
 tcp6      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 </span>::1:7777                :::*                    LISTEN      12991/open5gs-nrfd
 </code></pre>
 <p>Then kill the process and start again:  </p>
@@ -385,59 +396,40 @@ tcp6      <span class="hljs-number"> 0 </span>    <span class="hljs-number"> 0 <
 <pre><code class="lang-bash"><span class="hljs-selector-attr">[2021-07-16 16:07:38.192]</span> <span class="hljs-selector-attr">[nas]</span> <span class="hljs-selector-attr">[error]</span> <span class="hljs-attribute">Initial</span> Registration failed <span class="hljs-selector-attr">[FIVEG_SERVICES_NOT_ALLOWED]</span>
 </code></pre>
 <p>Solution: Make sure that the UE credentials entered in the admin interface are correct. The error means that the authentication with the core failed.</p>
+</div>
 
+  </main>
 
+  <footer class="page-footer font-small elegant-color-dark pt-4 mt-4">
+    <div class="container-fluid text-center text-md-left">
+      <div class="row">
+        <div class="col-md-6 mt-md-0 mt-3">
 
+          <h2>Katharina Kohls, Ruhr University Bochum</h2>
 
-<footer class="page-footer font-small elegant-color-dark pt-4 mt-4">
-  <div class="container-fluid text-center text-md-left">
-    <div class="row">
-      <div class="col-md-6 mt-md-0 mt-3">
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License BY-NC-ND"
+              style="border-width:0" width="80" height="15" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a><br>Illustrations by <a
+            href="http://kkohls.org" property="cc:attributionName" rel="cc:attributionURL">Katharina Kohls</a> are
+          licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons
+            Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+        </div>
 
-        <h5 class="text-uppercase">Katharina Kohls, Ruhr University Bochum</h5>
+        <hr class="clearfix w-100 d-md-none pb-3">
 
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License"
-            style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a><br /><span
-          xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Illustrations </span> by <a
-          href="http://kkohls.org" property="cc:attributionName" rel="cc:attributionURL">Katharina Kohls</a> are
-        licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons
-          Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
-      </div>
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <div class="col-md-6 mb-md-0 mb-3">
-        <h5 class="text-uppercase"><a href="/privacy.html" onclick="window.open('/privacy.html', '_self');">Privacy & Impressum</a></h5>
-        <p><a href="https://twitter.com/blister_green"><i class="fa fa-twitter fa-2x white-text"></i></a> <a href="mailto:katharina.kohls@rub.de"><i class="fa fa-envelope fa-2x white-text"></i></a></p>
+        <div class="col-md-6 mb-md-0 mb-3">
+          <h2><a href="/privacy">Privacy & Impressum</a></h2>
+          <p><a href="https://twitter.com/blister_green"><i class="fa fa-twitter fa-2x white-text"></i></a> <a href="mailto:katharina.kohls@rub.de"><i class="fa fa-envelope fa-2x white-text"></i></a></p>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/popper.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/mdb.min.js"></script>
-<script>
-$('.navbar-collapse a').click(function () {
-  $(".navbar-collapse").collapse('hide');
-});
-</script>
-<script>
-$(".smooth-scroll").on('click', 'a', function (event) {
-  event.preventDefault();
-  var elAttr = $(this).attr('href');
-  var offset = ($(this).attr('data-offset') ? $(this).attr('data-offset') : 0);
-  var fixedTop = $('.navbar.fixed-top');
-  if (fixedTop && fixedTop.length) {
-    offset = fixedTop.outerHeight();
-  }
-  $('body,html').animate({
-    //scrollTop: $(elAttr).offset().top - offset
-    scrollTop: $(elAttr).offset().top - 56
-  }, 700);
-});
-</script>
+
+
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/mdb.min.js"></script>
 </body>
 
 </html>
