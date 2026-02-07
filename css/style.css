@@ -21,6 +21,10 @@ h1 {
     line-height: 1.2;
 }
 
+main {
+  margin-top: 1.5em;
+}
+
 footer.page-footer h2 {
     font-size: 1.25rem;
     font-weight: 300;
