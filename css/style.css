@@ -30,6 +30,10 @@ main {
   margin-top: 1.5em;
 }
 
+section.container {
+  margin-bottom: 1.5em;
+}
+
 footer.page-footer h2 {
     font-size: 1.25rem;
     font-weight: 300;
