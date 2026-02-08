@@ -33,6 +33,7 @@ main {
 .major-section-heading {
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-top: 0.33em;
   margin-bottom: 0.66em;
 }
 
