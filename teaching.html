@@ -82,125 +82,51 @@
     </ul>
 
     <h2 id="theses">Theses and Research Internships</h2>
-    <h4 id="theses">Study Projects</h4>
-    <ul>
-        <li><strong>Controlling a Robotic Arm with 5G</strong>, BACHELOR/MASTER Thesis<br> 
-          Industrial facilities use 5G campus networks to control their production units and exchange information. Compared to WiFi setups, such 5G campus networks benefit from the security and performance capabilities of the latest mobile generation. However, we know a series of attacks that enable an adversary to interfere with components in a 5G network setup, and campus networks are not necessarily excluded from this threat.
-          In this thesis, you build a demonstrator setup that involves a robotic arm and a 5G network component. To this end, you will 3D-print a suitable model, assemble it, and connect it to a 5G lab network under your control. After the assembly, you will setup a toy example that allows you to control the robotic arm through the 5G cellular connection. In the final setup, you conduct a security analysis of the setup and reflect on the individual requirements in an industrial 5G campus network.
-        </li>
-        <!-- https://github.com/PCrnjak/PAROL6-Desktop-robot-arm?tab=readme-ov-file -->
-    </ul>
+<p>Our topics focus on attacks against mobile networks, privacy and anonymity in communication networks, and traffic analysis. Each thesis addresses a self-contained research question and aims to produce reproducible results. Where appropriate, results can contribute to ongoing research projects. The precise scope and prerequisites will be agreed upon before the thesis starts. Selected subtopics can also be scoped as research internships or study projects.</p>
 
-    <h4 id="theses">Mobile Communication</h4>
-      <ul>
-        <li><strong>Location Verification in Car2X Communication</strong>, MASTER Thesis<br> 
-          Cars exchange information with other vehicles, roadside units, or pedestrians and incorporate this data in, e.g., the navigation system. 5G enables such communication in a decentralized way where participants exchange information directly, meaning that no network infrastructure is needed. The correctness of exchanged location information is crucial for reasonable decision-making and a manipulation can affect the safety of participants in the traffic.
-          In this thesis, you implement a simulation model that allows for imitating the exchange of information between mobile participants in traffic. As part of the evaluation, you implement a verification mechanism that validates the location information of vehicles.
-        </li>
-    </ul>
-
-    <h4 id="theses">Privacy</h4>
-    <ul>
-      <li><strong>Biased Overlay Networks</strong>, BACHELOR/MASTER Thesis<br> An overlay network provides a service on
-        the application layer and uses the existing infrastructure of the Internet. One example of this is Tor, a system
-        that provides additional security and privacy for online connections. The level of protection that such a
-        connection can offer, however, depends on the infrastructure of the underlying network. For example, if the
-        traffic is routed through countries that monitor and censor Tor, transmissions are much more likely to be
-        targeted by attacks. In this thesis, your analyze the bias that the Internet infrastructure introduces for
-        overlay networks. To this end, you use empirical information of the Internet and match it with the
-        infrastructure of overlay networks. After implementing a simulation model, you analyze how the Internet
-        influences the security and privacy of connections and how it opens up attack vectors.</li>
-    </ul>
-
-    <h4 id="theses">AI-Driven Security Enhancements in 6G Network Architectures</h4>
-    <ul>
-
-      <li><strong>AI-based Network Planning for Secure 6G Campus Networks</strong>, MASTER Thesis<br>
-    <em>Context & Motivation:</em> Network planning strongly impacts both performance and security of mobile networks. Poor placement of base stations may enable attacks such as IMSI-Catchers or rogue base stations. AI-based optimization can help design topologies that minimize risks while maintaining performance.<br>
-    <em>Scientific Relevance:</em> Integrating security considerations directly into network planning is novel in 6G research. Existing approaches rarely combine topology optimization with security metrics.<br>
-    <em>Candidate Tasks:</em> Conduct literature study on network planning and security metrics; build a simulation model of campus networks; design and train an ML algorithm for secure cell placement; evaluate the approach against realistic attack and usage scenarios.<br>
-    <em>Tools / Skills:</em> ns-3, Python (TensorFlow/PyTorch), cellular networks knowledge (5G/6G), machine learning
+<h3 id="theses-mobile-security">Mobile Network Security</h3>
+<ul>
+  <li>
+    <strong>Reproducible Evaluation of Signaling Attacks in 5G Networks</strong> — Master's Thesis
+    <p>Mobile networks must remain available when individual participants generate excessive signaling traffic. This thesis investigates one selected signaling overload scenario in a software-based 5G lab environment. You will reproduce the scenario, distinguish its effects from legitimate load, and evaluate one mitigation, such as rate limiting. The evaluation will measure the impact on registration or session establishment, service availability, and resource consumption. The result will be a reproducible experiment with a clearly documented attacker model and limitations.</p>
+    <p><em>Prerequisites:</em> Linux, Python or comparable programming experience, and basic knowledge of mobile networks. Scope is limited to one supported procedure and one mitigation; radio hardware is not required.</p>
   </li>
-
-  <li><strong>Deep Learning for Anomaly Detection in the 6G Core</strong>, MASTER Thesis<br>
-    <em>Context & Motivation:</em> The 6G core network is a critical target for attacks such as denial-of-service or rogue functions. Classical intrusion detection systems struggle with scalability. Deep learning-based anomaly detection promises more robust protection.<br>
-    <em>Scientific Relevance:</em> While anomaly detection is well-studied, its application to 6G core functions is largely unexplored.<br>
-    <em>Candidate Tasks:</em> Analyze 6G core functions and attack vectors; collect or generate relevant network traffic data; implement and train DL-based anomaly detection models (Autoencoder, RNN, CNN); benchmark performance against classical IDS methods.<br>
-    <em>Tools / Skills:</em> Python, TensorFlow/Keras, Mininet/Open5GS, network security
+  <li>
+    <strong>Detecting Signaling Attacks under Changing Network Conditions</strong> — Master's Thesis
+    <p>An attack detector may perform well on familiar traffic but fail when legitimate network activity changes. This thesis evaluates how reliably selected signaling attacks can be detected across different loads and user activity patterns. You will use reproducible lab traces, compare a simple threshold-based detector with a classical machine learning approach, and test their behavior on separate experimental runs and previously unseen benign conditions. Evaluation will include precision, recall, false alarms, and detection delay. A deep learning model is an optional extension if the available data justify it.</p>
+    <p><em>Prerequisites:</em> Python, basic machine learning and network security. A usable trace source or minimal trace-generation setup must be established before the thesis starts; developing a complete attack testbed is outside the scope.</p>
   </li>
-
-  <li><strong>Simulation and Analysis of Attack Scenarios in 6G Network Structures</strong>, MASTER Thesis<br>
-    <em>Context & Motivation:</em> 6G networks will be highly complex, making realistic attack simulations (IMSI-Catcher, rogue base stations, traffic injection) essential for evaluating countermeasures.<br>
-    <em>Scientific Relevance:</em> Systematic simulation of such scenarios provides valuable data for AI-driven defense mechanisms.<br>
-    <em>Candidate Tasks:</em> Model different 6G attack vectors; implement scenarios in a simulator or testbed; analyze the impact on confidentiality, integrity, and availability; prepare datasets for ML-based defense methods.<br>
-    <em>Tools / Skills:</em> ns-3, OpenAirInterface, USRP (SDR), cellular security basics
+  <li>
+    <strong>How Much Network Visibility Is Needed to Detect Mobile Network Attacks?</strong> — Master's Thesis
+    <p>Security monitoring can use local observations at individual network functions or combine information from multiple observation points. This thesis studies whether additional visibility improves the detection of one selected mobile network attack. You will compare local and combined feature sets using the same detector and the same experimental runs. The evaluation will quantify detection quality, detection delay, and the volume of monitoring data exchanged. An optional extension examines missing or delayed observations. The result will identify when combined monitoring provides a measurable benefit.</p>
+    <p><em>Prerequisites:</em> Python and basic knowledge of network monitoring and statistics. The study uses offline traces or a small software lab; a distributed training platform is not required.</p>
   </li>
+</ul>
 
-  <!-- <li><strong>Adaptive Network Configuration via Reinforcement Learning</strong>, MASTER Thesis<br>
-    <em>Context & Motivation:</em> Static network configurations are insufficient against evolving threats. Reinforcement Learning (RL) can dynamically adapt parameters to improve resilience.<br>
-    <em>Scientific Relevance:</em> RL is a young but promising research approach to network security, especially relevant for adaptive 6G infrastructures.<br>
-    <em>Tools / Skills:</em> Python (Stable Baselines, Gym), ns-3 or simulation, reinforcement learning
-  </li> -->
-
-  <!-- <li><strong>Explainable AI (XAI) for Security-Critical Network Decisions</strong>, MASTER Thesis<br>
-    <em>Context & Motivation:</em> AI models are often black boxes. In security-critical network decisions, operators must understand the reasoning behind AI actions. XAI provides transparency and trust.<br>
-    <em>Scientific Relevance:</em> Explainable AI is growing rapidly but has rarely been applied to mobile network security and planning.<br>
-    <em>Tools / Skills:</em> Python, Scikit-learn, SHAP/LIME, ML and network security basics
-  </li> -->
-
-  <!-- <li><strong>Standardization Perspectives of AI-based Network Security Methods</strong>, MASTER Thesis<br>
-    <em>Context & Motivation:</em> Results from IGEL-AI could influence standardization bodies like 3GPP, ETSI, or O-RAN. Evaluating compatibility and integration potential is crucial.<br>
-    <em>Scientific Relevance:</em> Standardization is the key to turning novel AI-based methods into adopted technologies in future mobile networks.<br>
-    <em>Tools / Skills:</em> Literature/document analysis, telecom standards knowledge, optional text-mining tools
-  </li> -->
-
-  <li><strong>Centralized vs. Decentralized AI Approaches for Network Security</strong>, MASTER Thesis<br>
-    <em>Context & Motivation:</em> Deciding whether AI for network security runs centrally (cloud) or decentrally (edge) affects performance, latency, and resilience.<br>
-    <em>Scientific Relevance:</em> The trade-off between cloud-based and edge AI is a hot research topic in 6G and has direct implications for secure infrastructures.<br>
-    <em>Candidate Tasks:</em> Compare centralized vs. decentralized AI security models; build proof-of-concepts (edge training vs. cloud training); evaluate performance, latency, and energy efficiency; derive architectural recommendations.<br>
-    <em>Tools / Skills:</em> TensorFlow Lite, Docker/Kubernetes, edge computing basics, distributed systems
+<h3 id="theses-privacy">Privacy, Anonymity, and Traffic Analysis</h3>
+<ul>
+  <li>
+    <strong>Infrastructure Concentration and Correlation Risks in Tor</strong> — Bachelor's or Master's Thesis
+    <p>Anonymity networks depend on Internet infrastructure that may concentrate traffic within a small number of networks. This thesis investigates how relay placement and underlying routing affect an observer's opportunity to see both ends of a Tor connection. You will combine public relay information with Internet topology data and evaluate exposure under explicit observer assumptions. The bachelor's scope focuses on relay hosting concentration and potential exposure. The master's scope adds inferred network paths, a comparison of path-selection strategies, and sensitivity analysis. Results must distinguish estimated observation opportunities from demonstrated deanonymization.</p>
+    <p><em>Prerequisites:</em> Python, data analysis, and basic Internet routing knowledge. Data access and snapshot compatibility must be checked before the thesis starts; no monitoring of real users is required.</p>
   </li>
-    </ul>
+  <li>
+    <strong>Evaluating Padding and Timing Defenses against Traffic Analysis</strong> — Bachelor's Thesis
+    <p>Encryption hides message contents but can leave packet timing, sizes, and traffic volume visible. This thesis evaluates two selected defenses, such as fixed-size padding and dummy traffic, against one clearly defined traffic analysis attack. You will implement or adapt the defenses in a trace-based experiment and compare them with an undefended baseline. Evaluation will measure attack success, additional traffic, and added delay across different workloads. The result will show the privacy–performance trade-off within the chosen threat model rather than assume that traffic modification guarantees anonymity.</p>
+    <p><em>Prerequisites:</em> Python and basic networking and statistics. The work can use synthetic or openly available traces and does not require quantum hardware or a project-specific simulator.</p>
+  </li>
+  <li>
+    <strong>Visual Analysis of Metadata Leakage in Communication Traces</strong> — Bachelor's Thesis
+    <p>Traffic visualizations can help explain which communication patterns remain observable after a privacy defense is applied. This thesis develops a small analysis tool for comparing original and modified traces using packet timelines, burst patterns, and quantitative leakage indicators. The research question is whether selected indicators reliably expose residual patterns under controlled changes to padding, timing, or background traffic. You will evaluate them on labeled synthetic cases and compare the visual findings with a simple traffic analysis baseline. The contribution is an evaluated analysis method supported by a focused interface.</p>
+    <p><em>Prerequisites:</em> Python or JavaScript, data visualization, and basic networking. Scope is limited to one documented trace format and a small set of analysis tasks; integration into a project platform is optional.</p>
+  </li>
+  <li>
+    <strong>Robustness of Flow Correlation Attacks against Privacy Defenses</strong> — Master's Thesis
+    <p>An observer who sees traffic at two locations may try to link flows using timing and burst patterns. This thesis investigates how robust such correlation attacks are when traffic is delayed, mixed with background traffic, or modified by privacy defenses. You will implement one established correlation method and a simple baseline in a standalone trace-processing pipeline. Evaluation will vary observer visibility and network conditions and report true matches at controlled false-positive rates, alongside the traffic and delay overhead of the defenses. Where interfaces and traces are available, the pipeline can additionally evaluate scenarios from the SQUID project.</p>
+    <p><em>Prerequisites:</em> Python, statistics, and familiarity with network traffic analysis. The core evaluation must run independently of the SQUID simulator and does not require quantum hardware.</p>
+  </li>
+</ul>
 
-    <h4 id="theses">Quantum-Based Untraceable Communication</h4>
-    <ul>
-
-      <li><strong>Implementation and Benchmarking of Classical Traffic Morphing Techniques</strong>, BACHELOR Thesis<br>
-        Classical traffic morphing techniques remain foundational for traffic privacy. Their performance and limits need
-        to be understood before integrating quantum-inspired ideas.<br>
-        The thesis involves implementing traffic morphing strategies (e.g., dummy traffic, timing shifts), running
-        benchmark experiments, and evaluating their effectiveness under known traffic analysis attacks.
-      </li>
-
-      <li><strong>Frontend for Visualizing Simulated Traffic Traces</strong>, BACHELOR Thesis<br>
-        Traffic simulations often generate abstract trace files that are hard to interpret. A visual frontend helps
-        researchers understand how protocols affect observable traffic.<br>
-        The thesis includes developing a simple web-based interface for viewing packet timelines, flow
-        diagrams, and adversarial trace reconstructions based on simulation output files.
-      </li>
-
-      <!-- <li><strong>Extending Mixing Protocols with Quantum-Inspired Randomness Models</strong>, MASTER Thesis<br>
-        Quantum processes can produce randomness distributions that differ from classical pseudorandom generators. These
-        may help design harder-to-predict mixing strategies.<br>
-        This thesis will extend existing mixnet-like protocols by integrating non-classical randomness models and
-        analyze their effects on metadata leakage and traffic flow patterns.
-      </li> -->
-
-      <li><strong>Integration of Adversarial Correlation Attacks into Simulation Testbed</strong>, MASTER Thesis<br>
-        To evaluate metadata leakage, simulation environments must include realistic adversarial models capable of
-        timing and flow analysis.<br>
-        The thesis will implement correlation-based traffic analysis attacks (e.g., flow linking, burst timing) as
-        modular components in the simulation framework, and provide evaluation scenarios comparing defenses from the
-        SQUID project.
-      </li>
-
-      <!-- <li><strong>Evaluation of Anonymity Metrics in Quantum-Enhanced Protocol Models</strong>, MASTER Thesis<br>
-        Classical anonymity metrics may not capture the privacy implications of quantum-augmented protocols. A critical
-        evaluation is needed to adapt or rethink these metrics.<br>
-        The thesis will apply, adapt, and evaluate existing anonymity metrics (like k-anonymity, entropy-based metrics)
-        on quantum-inspired protocols, identifying their strengths and weaknesses in this new context.
-      </li> -->
-    </ul>
 
     
   </ul>
